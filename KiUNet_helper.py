@@ -33,7 +33,7 @@ class BaseTrainHelper(object):
             print("加载模型成功")
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model.to(device)
-        optimizer = torch.optim.AdamW(model.parameters(), lr=model_lr)
+        optimizer = torch.optim.Adam(model.parameters(), lr=model_lr)
         print(torch.cuda.memory_summary())
         # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, [epochs//3, epochs//3*2], 0.1)
         for i in range(1, train_step+1):
@@ -61,7 +61,7 @@ class BaseTrainHelper(object):
                             out = model(batch_x)
                             loss = bce_loss(out, batch_y)
                         scaler.scale(loss).backward()
-                        nn.utils.clip_grad_norm_(model.parameters(), max_norm=20, norm_type=2) #梯度裁剪,防止梯度爆炸
+                        # nn.utils.clip_grad_norm_(model.parameters(), max_norm=20, norm_type=2) #梯度裁剪,防止梯度爆炸
                         scaler.unscale_(optimizer)
                         scaler.step(optimizer)
                         scaler.update()
@@ -72,6 +72,8 @@ class BaseTrainHelper(object):
                 # scheduler.step()  # 更新learning rate
                 print('Train Loss: %.6f' % (train_loss / (math.ceil(len(dataset) / batch_size))))
                 loss_train.append(train_loss / (math.ceil(len(dataset) / batch_size)))
+                if epoch%10==0:
+                    torch.save(model.state_dict(), saveModel_name + "_" +str(epoch)+'_'+ str(i) + ".pth")
 
                 #evaluation---------------------
                 # model.eval()

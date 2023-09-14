@@ -1,13 +1,13 @@
 from commons.tool import listdir
 from models.KiUNet import kiunet3d
 
-patch_size = [128, 128, 32]
+patch_size = [64, 64, 32]
 
 num_classes = 1
 channel_in = 1
 
-model_lr = 0.001
-batch_size = 1
+model_lr = 0.0000001
+batch_size = 4
 batch_size_val = 1
 epochs = 100
 train_step = 5
