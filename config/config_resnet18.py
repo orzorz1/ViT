@@ -8,15 +8,15 @@ num_classes = 1
 channel_in = 1
 
 model_lr = 0.001
-batch_size = 9
+batch_size = 5
 batch_size_val = 1
 epochs = 100
 train_step = 5
 model = ResNet18(in_channels=channel_in, num_classes=num_classes)
 
 train_model_path = ""
-pre_model_path = ""
-trainOrPredict = "train"  # "train" or "predict"
+pre_model_path = "./ResNet18_4.pth"
+trainOrPredict = "predict"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
 save_log = False  # 是否记录训练日志
 saveModel_name = "ResNet18"

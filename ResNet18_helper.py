@@ -147,7 +147,8 @@ class BaseTrainHelper(object):
 
             pre = predict / count
             pre[np.isnan(pre)] = 0.0001
-            pre = np.around(sigmoid(pre))
+            pre = np.around(sigmoid(pre)-0.0001)
+            # pre = torch.max(nn.Softmax(dim=0)(pre), 0)[1].cpu().detach().numpy()
             print(pre.shape)
             save_nii_(pre.astype(np.int16), saveImage_name+"_"+str(index), path_x)
 
@@ -160,6 +161,6 @@ if __name__ == '__main__':
         NetWork.train(train_model_path)
     else:
         print(pre_model_path)
-        NetWork.predct(0, 3, pre_model_path)
+        NetWork.predct(0, 4, pre_model_path)
 
     os.system("shutdown")

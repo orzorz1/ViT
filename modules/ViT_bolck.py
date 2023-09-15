@@ -100,3 +100,12 @@ class UNet_decoder(nn.Module):
         x = self.rearrange(x)
         return {"out": x, "token": cls_tokens}
 
+if __name__ == "__main__":
+    model = UNet_decoder(image_size=128, patch_size=16, num_classes=3, dim=768)
+    x = torch.randn([5,1,128,128,128])
+    print(x.shape)
+    y = model(x)
+    print(y['out'].shape)
+
+
+

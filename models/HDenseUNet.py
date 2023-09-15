@@ -309,7 +309,7 @@ class dense_rnn_net(nn.Module):
         input2d = x[:, 0:2, :, :]
         single = x[:, 0:1, :, :]
         input2d = torch.cat((input2d, single), 1)
-        for i in range(self.num_slide - 2):
+        for i in range(self.num_slide - 2):  #3D->2D,切3片堆叠
             input2dtmp = x[:, i:i + 3, :, :]
             input2d = torch.cat((input2d, input2dtmp), 0)
             if i == self.num_slide - 3:
@@ -317,22 +317,28 @@ class dense_rnn_net(nn.Module):
                 f2 = x[:, self.num_slide - 1: self.num_slide, :, :]
                 ff = torch.cat((f1, f2), 1)
                 input2d = torch.cat((input2d, ff), 0)
+        # input2d.shape = (num(num_slide*batch_size), 3, width, height)
 
         # input2d = input2d[:, :, :, :, 0]
         # input2d = input2d.permute(0, 3, 1, 2)
 
         feature2d = self.dense2d(input2d)
         final2d = self.conv2d5(feature2d)
+        print(final2d.shape)
 
         input3d = final2d.clone().permute(1, 0, 2, 3)
+        print(input3d.shape)
         feature2d = feature2d.clone().permute(1, 0, 2, 3)
         input3d.unsqueeze_(0)
         feature2d.unsqueeze_(0)
 
         x_tmp = x.clone().unsqueeze(0)
         x_tmp *= 250.0
+        print(x_tmp.shape)
+        print(input3d.shape)
 
         input3d = torch.cat((input3d, x_tmp), 1)
+        print(input3d.shape)
 
         feature3d = self.dense3d(input3d)
         output3d = self.conv3d5(feature3d)
@@ -352,7 +358,7 @@ class dense_rnn_net(nn.Module):
 
 if __name__ == "__main__":
     model = dense_rnn_net(8)
-    x = torch.randn([2,1,64,64,64])
+    x = torch.randn([1,8, 224, 224])
     print(x.shape)
     y = model(x)
     print(y.shape)

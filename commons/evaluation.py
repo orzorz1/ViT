@@ -152,13 +152,13 @@ def get_DC(SR, GT, threshold=0.5):
 
 
 metric = {"Dice": dice_coef,
-          # "Accuracy": get_accuracy,
+          "Accuracy": get_accuracy,
           # "Jaccard": compute_jaccard,x
-          # "Sensitivity": get_sensitivity,
-          # "Specificity": get_specificity,
-          # "Precision": get_precision,
+          "Sensitivity": get_sensitivity,
+          "Specificity": get_specificity,
+          "Precision": get_precision,
           # "F1": get_F1,x
-          # "Jaccard": get_JS,
+          "Jaccard": get_JS,
           # "DC": get_DC,x
           # "ASSD":get_ASSDx
 }
@@ -187,12 +187,12 @@ metric = {"Dice": dice_coef,
 
 for key, value in metric.items():
     print(key)
-    for n in range(0,4):
-        path_x = "../save/ADVENT_attention/pre/ADVENT_attention_segmentation_source_"+str(n+16)+".nii.gz"
+    for n in range(0,5):
+        path_x = "../save/resnet/1/pre/ResNet18_CHAOSct_pre_"+str(n)+".nii.gz"
         x = read_nii(path_x)
         x = torch.tensor(x)
         # path_y = "../dataset/CHAOS_Train_Sets_nifti_mr_Label/"+str(n+36)+"_segmentation_T1DUAL.nii.gz"
-        path_y = "../dataset/CHAOS_Train_Sets_nifti_ct/label/" + str(n + 27) + "_segmentation.nii.gz"
+        path_y = "G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/labelsTs/case_000"+str(n+15)+".nii.gz"
         y = read_nii(path_y)
         y = torch.tensor(y)
         print(value(x, y))

@@ -6,16 +6,17 @@ patch_size = [64, 64, 32]
 num_classes = 1
 channel_in = 1
 
-model_lr = 0.00000001
+model_lr = 0.00001
 batch_size = 5
 batch_size_val = 1
 epochs = 100
 train_step = 5
 model = kiunet3d(c=channel_in, n=1, num_classes=num_classes)
 
-train_model_path = ""  # 从0开始训练填""
+
+train_model_path = ""
 pre_model_path = ""
-trainOrPredict = "train"  # "train" or "predict"
+trainOrPredict = "train"
 openAMP = True  # 是否开启自动混合精度
 save_log = True  # 是否记录训练日志
 saveModel_name = "kiunet"
