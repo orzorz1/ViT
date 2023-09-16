@@ -72,11 +72,15 @@ class UNet_decoder(nn.Module):
         self.right_conv_4 = up.double_conv(64, 64)
         self.deconv_5 = nn.ConvTranspose3d(64, 32, kernel_size=2, stride=2)
         self.right_conv_5 = up.double_conv(32, 32)
-        self.last_conv_16 = nn.Conv3d(64, 1, (3, 3), padding=1)
-        self.last_conv_32 = nn.Conv3d(32, 1, (3, 3), padding=1)
-        self.rearrange = Rearrange('b (h w d) (p1 p2 p3 c) -> b c (h p1) (w p2) (d p3)', h=(image_height // patch_height),
-                  w=(image_width // patch_width), d=(image_depth // patch_depth), p1=patch_height,
-                  p2=patch_width, p3=patch_depth, c=1),
+        self.last_conv_16 = nn.Conv3d(64, 1, (3, 3, 3), padding=1)
+        self.last_conv_32 = nn.Conv3d(32, 1, (3, 3, 3), padding=1)
+        # self.rearrange = Rearrange('b (h w d) (p1 p2 p3 c) -> b c (h p1) (w p2) (d p3)', h=(image_height // patch_height),
+        #           w=(image_width // patch_width), d=(image_depth // patch_depth), p1=patch_height,
+        #           p2=patch_width, p3=patch_depth, c=1),
+        # self.rearrange = Rearrange('b (h w d) (p1 p2 p3 c) -> b c (h p1) (w p2) (d p3)',
+        #                            h=(image_height // patch_height),
+        #                            w=(image_width // patch_width), d=(image_depth // patch_depth), p1=patch_height,
+        #                            p2=patch_width, p3=patch_depth, c=1)
         self.sigmoid = nn.Sigmoid()
     def forward(self, input):
         embedding = input['embedding']
@@ -97,13 +101,15 @@ class UNet_decoder(nn.Module):
             x = self.last_conv_32(x)
         else:
             raise ZeroDivisionError("ViT_patch_size暂时只能为16或32")
-        x = self.rearrange(x)
+        # x = self.rearrange(x)
         return {"out": x, "token": cls_tokens}
 
 if __name__ == "__main__":
     model = UNet_decoder(image_size=128, patch_size=16, num_classes=3, dim=768)
-    x = torch.randn([5,1,128,128,128])
-    print(x.shape)
+    x = {}
+    x['embedding'] = torch.randn([1,768,8,8,8])
+    x['token'] = torch.randn([1,1,128])
+    print(x['embedding'].shape)
     y = model(x)
     print(y['out'].shape)
 

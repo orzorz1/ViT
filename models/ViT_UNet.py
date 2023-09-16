@@ -5,13 +5,15 @@ class ViTSeg(nn.Module):
                  pool='cls', channels=3, dim_head=64, dropout=0., emb_dropout=0.,
                  learned_pos=True, use_token=False):
         super().__init__()
+        self.dim = dim
+        self.image_size = image_size
         self.encoder = ViT_encoder(image_size=image_size, patch_size=patch_size, num_classes=num_classes, dim=dim, depth=depth, heads=heads, mlp_dim=mlp_dim, channels=channels,
                    pool=pool, dim_head=dim_head, dropout=dropout, emb_dropout=emb_dropout, learned_pos=learned_pos, use_token=use_token)
         self.decoder = UNet_decoder(image_size=image_size, patch_size=patch_size, num_classes=num_classes, dim=dim)
 
     def forward(self, img):
         x = self.encoder(img)
-        print(x['embedding'].shape)
+        x['embedding'] = x['embedding'].permute(0, 2, 1).view(5, self.dim, self.image_size//16,self.image_size//16,self.image_size//16)
         x = self.decoder(x)
         return x
 
