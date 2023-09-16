@@ -12,16 +12,17 @@ class ViTSeg(nn.Module):
         self.decoder = UNet_decoder(image_size=image_size, patch_size=patch_size, num_classes=num_classes, dim=dim)
 
     def forward(self, img):
+        batch_size = img.shape[0]
         x = self.encoder(img)
-        x['embedding'] = x['embedding'].permute(0, 2, 1).view(5, self.dim, self.image_size//16,self.image_size//16,self.image_size//16)
+        x['embedding'] = x['embedding'].permute(0, 2, 1).view(batch_size, self.dim, self.image_size[0]//16,self.image_size[1]//16,self.image_size[2]//16)
         x = self.decoder(x)
         return x
 
 
 if __name__ == "__main__":
-    model = ViTSeg(image_size=128, patch_size=16, num_classes=3, dim=768, depth=6, heads=12, mlp_dim=2048, channels=1,
+    model = ViTSeg(image_size=[128,128,32], patch_size=16, num_classes=3, dim=768, depth=6, heads=12, mlp_dim=2048, channels=1,
                    learned_pos=False, use_token=True)
-    x = torch.randn([5,1,128,128,128])
+    x = torch.randn([5,1,128,128,32])
     print(x.shape)
     y = model(x)
     print(y['out'].shape)
