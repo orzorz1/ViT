@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="region-41.seetacloud.com" id="d5be5e7e-056a-4c8a-a726-385ff2dbe055" port="18671" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="region-45.autodl.pro" id="11c1aca6-19a6-4c87-b1ec-12f085e954cc" port="54975" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

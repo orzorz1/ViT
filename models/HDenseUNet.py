@@ -289,10 +289,10 @@ class denseUnet3d(nn.Module):
         return out
 
 
-class dense_rnn_net(nn.Module):
-    def __init__(self, num_slide, drop_rate=0.3):
-        super(dense_rnn_net, self).__init__()
-        self.num_slide = num_slide
+class HDenseUNet(nn.Module):
+    def __init__(self, class_num, drop_rate=0.3):
+        super(HDenseUNet, self).__init__()
+        self.num_slide = 0
         self.drop = drop_rate
         self.dense2d = denseUnet()
         self.dense3d = denseUnet3d(4)
@@ -301,14 +301,15 @@ class dense_rnn_net(nn.Module):
         self.finalConv3d1 = nn.Conv3d(64, 64, (3, 3, 3), padding=(1, 1, 1))
         self.finalBn = nn.BatchNorm3d(64)
         self.finalAc = nn.ReLU(inplace=True)
-        self.finalConv3d2 = nn.Conv3d(64, 3, (1, 1, 1))
+        self.finalConv3d2 = nn.Conv3d(64, class_num, (1, 1, 1))
 
     def forward(self, x):
-        # x = x[0:1, :, :, :, :]
-        print("x shape : ", x.shape)
+        x = x.squeeze(1).permute(0, 3, 1, 2)
+        self.num_slide = x.shape[1]
+        b = x.shape[0]
         input2d = x[:, 0:2, :, :]
         single = x[:, 0:1, :, :]
-        input2d = torch.cat((input2d, single), 1)
+        input2d = torch.cat((single,input2d), 1)
         for i in range(self.num_slide - 2):  #3D->2D,切3片堆叠
             input2dtmp = x[:, i:i + 3, :, :]
             input2d = torch.cat((input2d, input2dtmp), 0)
@@ -321,24 +322,33 @@ class dense_rnn_net(nn.Module):
 
         # input2d = input2d[:, :, :, :, 0]
         # input2d = input2d.permute(0, 3, 1, 2)
-
         feature2d = self.dense2d(input2d)
         final2d = self.conv2d5(feature2d)
-        print(final2d.shape)
+        res2d = torch.empty((0, self.num_slide, 3, x.shape[2], x.shape[3]))
+        fea2d = torch.empty((0, self.num_slide, 64, x.shape[2], x.shape[3]))
+        # 将2d转为3d图像
+        for i in range(b):
+            r = final2d[i:i+1, :, :, :]
+            f = feature2d[i:i+1, :, :, :]
+            for j in range(i+b, final2d.shape[0], b):
+                r1 = final2d[j:j+1, :, :, :]
+                f1 = feature2d[j:j+1, :, :, :]
+                r = torch.cat((r, r1), 0)
+                f = torch.cat((f, f1), 0)
+            r = torch.unsqueeze(r, 0)
+            f = torch.unsqueeze(f, 0)
+            res2d = torch.cat((res2d, r), 0)
+            fea2d = torch.cat((fea2d, f), 0)
 
-        input3d = final2d.clone().permute(1, 0, 2, 3)
-        print(input3d.shape)
-        feature2d = feature2d.clone().permute(1, 0, 2, 3)
-        input3d.unsqueeze_(0)
-        feature2d.unsqueeze_(0)
+        input3d = res2d.clone().permute(0, 2, 1, 3, 4)
+        feature2d = fea2d.clone().permute(0, 2, 1, 3, 4)
 
-        x_tmp = x.clone().unsqueeze(0)
-        x_tmp *= 250.0
-        print(x_tmp.shape)
-        print(input3d.shape)
+        input3d_tmp = input3d.clone()  #这里应该是input3d*250
+        input3d_tmp *= 250.0
+        x_tmp = x.clone().unsqueeze(1)
 
-        input3d = torch.cat((input3d, x_tmp), 1)
-        print(input3d.shape)
+
+        input3d = torch.cat((x_tmp, input3d_tmp), 1)  #应该是原始的x与input3d*250 cat
 
         feature3d = self.dense3d(input3d)
         output3d = self.conv3d5(feature3d)
@@ -351,14 +361,15 @@ class dense_rnn_net(nn.Module):
 
         finalout = self.finalBn(finalout)
         finalout = self.finalAc(finalout)
-        finalout = self.finalConv3d2(finalout)
+        finalout = (self.finalConv3d2(finalout))
+        finalout = finalout.permute(0, 1, 3, 4, 2)
 
         return finalout
         # return output3d
 
 if __name__ == "__main__":
-    model = dense_rnn_net(8)
-    x = torch.randn([1,8, 224, 224])
+    model = HDenseUNet(class_num=1)
+    x = torch.randn([2, 1, 128, 128, 32])
     print(x.shape)
     y = model(x)
     print(y.shape)
