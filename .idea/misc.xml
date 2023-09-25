@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (base)" project-jdk-type="Python SDK" />
-=======
-  <component name="ProjectRootManager" version="2" project-jdk-name="Remote Python 3.8.10 (sftp://root@region-41.seetacloud.com:18671/root/miniconda3/bin/python3.8) (2)" project-jdk-type="Python SDK" />
->>>>>>> 80717b0d01e2990de55b4aa550c1b580fdd93137
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (untitled1)" project-jdk-type="Python SDK" />
 </project>
