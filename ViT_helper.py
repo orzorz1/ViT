@@ -160,6 +160,6 @@ if __name__ == '__main__':
         NetWork.train(train_model_path)
     else:
         print(pre_model_path)
-        NetWork.predct(0, 3, pre_model_path)
+        NetWork.predct(0, 4, pre_model_path)
 
     os.system("shutdown")

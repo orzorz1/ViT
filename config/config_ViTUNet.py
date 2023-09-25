@@ -15,9 +15,9 @@ train_step = 3
 model = ViTSeg(image_size=patch_size, patch_size=ViT_patch_size, num_classes=num_classes,
                dim= 768, depth=24, heads=48, mlp_dim=4096, channels=channel_in, learned_pos=False, use_token=True)
 
-train_model_path = ""  # 从0开始训练填""
-pre_model_path = ""
-trainOrPredict = "train"  # "train" or "predict"
+train_model_path = "./ViTUNetseg_3.pth"
+pre_model_path = "./ViTUNetseg_3.pth"
+trainOrPredict = "predict"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
 save_log = False  # 是否记录训练日志
 saveModel_name = "ViTUNetseg"

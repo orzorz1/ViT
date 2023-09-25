@@ -1,7 +1,7 @@
 from matplotlib import pylab as plt
 import nibabel as nib
 import numpy as np
-from config.config_resnet18 import train_image_list
+from config.config_ViT import train_image_list
 
 def print2D(img):
     plt.imshow(img, cmap='gray')
