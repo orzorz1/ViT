@@ -6,8 +6,8 @@ patch_size = [128, 128, 32]
 num_classes = 1
 channel_in = 1  #输入channel只能为1
 
-model_lr = 0.000001
-batch_size = 4
+model_lr = 0.0001
+batch_size = 5
 batch_size_val = 1
 epochs = 100
 train_step = 1

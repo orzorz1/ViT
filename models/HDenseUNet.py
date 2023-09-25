@@ -25,7 +25,7 @@ class Scale(nn.Module):
     def forward(self, x):
         y = torch.zeros(x.shape, dtype=x.dtype, device=x.device)
         for i in range(self.num_feature):
-            y[:, i, :, :] = x[:, i, :, :].clone() * self.gamma[i] + self.beta[i]
+            y[:, i, :, :] = x[:, i, :, :] * self.gamma[i] + self.beta[i]
         return y
 
 
@@ -39,7 +39,7 @@ class Scale3d(nn.Module):
     def forward(self, x):
         y = torch.zeros(x.shape, dtype=x.dtype, device=x.device)
         for i in range(self.num_feature):
-            y[:, i, :, :, :] = x[:, i, :, :, :].clone() * self.gamma[i] + self.beta[i]
+            y[:, i, :, :, :] = x[:, i, :, :, :] * self.gamma[i] + self.beta[i]
         return y
 
 
@@ -324,8 +324,9 @@ class HDenseUNet(nn.Module):
         # input2d = input2d.permute(0, 3, 1, 2)
         feature2d = self.dense2d(input2d)
         final2d = self.conv2d5(feature2d)
-        res2d = torch.empty((0, self.num_slide, 3, x.shape[2], x.shape[3]))
-        fea2d = torch.empty((0, self.num_slide, 64, x.shape[2], x.shape[3]))
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        res2d = torch.empty((0, self.num_slide, 3, x.shape[2], x.shape[3])).to(device)
+        fea2d = torch.empty((0, self.num_slide, 64, x.shape[2], x.shape[3])).to(device)
         # 将2d转为3d图像
         for i in range(b):
             r = final2d[i:i+1, :, :, :]
@@ -340,17 +341,17 @@ class HDenseUNet(nn.Module):
             res2d = torch.cat((res2d, r), 0)
             fea2d = torch.cat((fea2d, f), 0)
 
-        input3d = res2d.clone().permute(0, 2, 1, 3, 4)
-        feature2d = fea2d.clone().permute(0, 2, 1, 3, 4)
+        input3d = res2d.permute(0, 2, 1, 3, 4)
+        feature2d = fea2d.permute(0, 2, 1, 3, 4)
 
-        input3d_tmp = input3d.clone()  #这里应该是input3d*250
+        input3d_tmp = input3d  #这里应该是input3d*250
         input3d_tmp *= 250.0
-        x_tmp = x.clone().unsqueeze(1)
+        x_tmp = x.unsqueeze(1)
 
 
-        input3d = torch.cat((x_tmp, input3d_tmp), 1)  #应该是原始的x与input3d*250 cat
+        in3d = torch.cat((x_tmp, input3d_tmp), 1)  #应该是原始的x与input3d*250 cat
 
-        feature3d = self.dense3d(input3d)
+        feature3d = self.dense3d(in3d)
         output3d = self.conv3d5(feature3d)
 
         final = torch.add(feature2d, feature3d)
@@ -372,4 +373,4 @@ if __name__ == "__main__":
     x = torch.randn([2, 1, 128, 128, 32])
     print(x.shape)
     y = model(x)
-    print(y.shape)
+    print(y.sum())

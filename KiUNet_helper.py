@@ -39,7 +39,7 @@ class BaseTrainHelper(object):
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))
             val_data = load_dataset_one(test_image_list, test_label_list, 1, patch_size)
-            dataset = load_dataset(train_image_list, train_label_list, 0, 14, i, patch_size)
+            dataset = load_dataset(train_image_list, train_label_list, 0, 1, i, patch_size)
             train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
             val_loader = DataLoader(dataset=val_data, batch_size=batch_size_val)
             for epoch in range(epochs):
@@ -59,6 +59,7 @@ class BaseTrainHelper(object):
                     else:
                         with autocast():
                             out = model(batch_x)
+                            print(out.sum())
                             loss = bce_loss(out, batch_y)
                         scaler.scale(loss).backward()
                         # nn.utils.clip_grad_norm_(model.parameters(), max_norm=20, norm_type=2) #梯度裁剪,防止梯度爆炸
@@ -67,6 +68,13 @@ class BaseTrainHelper(object):
                         scaler.update()
 
                     train_loss += loss.item()
+                    if (batch == 0 or batch == 6 or batch == 9) and (epoch == 99 or epoch == 79 or epoch == 59 or epoch == 29 or epoch == 9 or epoch == 0):
+                        save_nii(batch_x.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}X'.format(name=i, e=epoch+1, batch=batch))
+                        save_nii(batch_y.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}Y'.format(name=i, e=epoch+1, batch=batch))
+                        out = np.around(sigmoid(out.cpu().detach().numpy()[0]))
+                        out = out.astype(np.float32)
+                        save_nii(out[0], '{name}-{e}-{batch}Out0'.format(name=i, e=epoch+1, batch=batch))
+
                     print('epoch: %2d/%d batch %3d/%d  Train Loss: %.6f'
                           % (epoch + 1, epochs, batch + 1, math.ceil(len(dataset) / batch_size),loss.item(),))
                 # scheduler.step()  # 更新learning rate
