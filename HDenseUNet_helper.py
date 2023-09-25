@@ -11,7 +11,7 @@ from commons.plot import save_nii
 import torchsummary
 np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
-from config.config_KiUNet import *
+from config.config_HDenseUNet import *
 from commons.log import make_print_to_file
 from torch.cuda.amp import autocast as autocast, GradScaler
 
@@ -34,14 +34,14 @@ class BaseTrainHelper(object):
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model.to(device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=model_lr)
-        print(torch.cuda.memory_summary())
+        # print(torch.cuda.memory_summary())
         # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, [epochs//3, epochs//3*2], 0.1)
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))
             val_data = load_dataset_one(test_image_list, test_label_list, 1, patch_size)
-            dataset = load_dataset(train_image_list, train_label_list, 0, 1, i, patch_size)
+            dataset = load_dataset(train_image_list, train_label_list, 0, 14, i, patch_size)
             train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
-            val_loader = DataLoader(dataset=val_data, batch_size=batch_size_val)
+            # val_loader = DataLoader(dataset=val_data, batch_size=batch_size_val)
             for epoch in range(epochs):
                 # training-----------------------------------
                 model.train()
@@ -59,16 +59,15 @@ class BaseTrainHelper(object):
                     else:
                         with autocast():
                             out = model(batch_x)
-                            print(out.sum())
                             loss = bce_loss(out, batch_y)
                         scaler.scale(loss).backward()
-                        # nn.utils.clip_grad_norm_(model.parameters(), max_norm=20, norm_type=2) #梯度裁剪,防止梯度爆炸
+                        nn.utils.clip_grad_norm_(model.parameters(), max_norm=20, norm_type=2) #梯度裁剪,防止梯度爆炸
                         scaler.unscale_(optimizer)
                         scaler.step(optimizer)
                         scaler.update()
 
                     train_loss += loss.item()
-                    if (batch == 0 or batch == 6 or batch == 9) and (epoch == 99 or epoch == 79 or epoch == 59 or epoch == 29 or epoch == 9 or epoch == 0):
+                    if (batch == 0 or batch == 6 or batch == 9) and (epoch == 9 or epoch == 8 or epoch == 6 or epoch == 4 or epoch == 2 or epoch == 0):
                         save_nii(batch_x.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}X'.format(name=i, e=epoch+1, batch=batch))
                         save_nii(batch_y.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}Y'.format(name=i, e=epoch+1, batch=batch))
                         out = np.around(sigmoid(out.cpu().detach().numpy()[0]))
@@ -80,10 +79,10 @@ class BaseTrainHelper(object):
                 # scheduler.step()  # 更新learning rate
                 print('Train Loss: %.6f' % (train_loss / (math.ceil(len(dataset) / batch_size))))
                 loss_train.append(train_loss / (math.ceil(len(dataset) / batch_size)))
-                if epoch%10==0:
+                if epoch%2==0:
                     torch.save(model.state_dict(), saveModel_name + "_" +str(epoch)+'_'+ str(i) + ".pth")
 
-                #evaluation---------------------
+                # evaluation-----------------
                 # model.eval()
                 # eval_loss = 0
                 # for batch, (batch_x, batch_y, position) in enumerate(val_loader):
@@ -105,6 +104,7 @@ class BaseTrainHelper(object):
                 #         save_nii(batch_x.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}X'.format(name=i, e=epoch+1, batch=batch))
                 #         save_nii(batch_y.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}Y'.format(name=i, e=epoch+1, batch=batch))
                 #         out = np.around(sigmoid(out.cpu().detach().numpy()[0]))
+                #         out = out.astype(np.float32)
                 #         save_nii(out[0], '{name}-{e}-{batch}Out0'.format(name=i, e=epoch+1, batch=batch))
                 #
                 # print('Val Loss: %.6f' % (eval_loss / (math.ceil(len(val_data) / batch_size_val))))
@@ -169,6 +169,6 @@ if __name__ == '__main__':
         NetWork.train(train_model_path)
     else:
         print(pre_model_path)
-        NetWork.predct(0, 3, pre_model_path)
+        NetWork.predct(0, 4, pre_model_path)
 
     os.system("shutdown")
