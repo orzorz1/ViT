@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@connect.southb.gpuhub.com:46446" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="54975 root@123.125.240.150">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/root/autodl-tmp/hongxuanli/ViT" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.southb.gpuhub.com:46446">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/ViT" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
@@ -87,5 +94,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
