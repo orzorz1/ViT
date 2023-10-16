@@ -23,10 +23,10 @@ save_log = False  # 是否记录训练日志
 saveModel_name = "ViTseg"
 saveImage_name = "ViT_CHAOSct_pre"
 
-train_image_path = 'G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/imagesTr'
-train_label_path = 'G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/labelsTr'
-test_image_path = 'G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/imagesTs'
-test_label_path = 'G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/labelsTs'
+train_image_path = '../dataset/Task20_CHAOSct/imagesTr'
+train_label_path = '../dataset/Task20_CHAOSct/labelsTr'
+test_image_path = '../dataset/Task20_CHAOSct/imagesTs'
+test_label_path = '../dataset/Task20_CHAOSct/labelsTs'
 
 train_image_list = listdir(train_image_path)
 train_label_list = listdir(train_label_path)
