@@ -1,8 +1,8 @@
 from torch import nn
 from typing import Tuple, Union
-from unetr_pp.network_architecture.neural_network import SegmentationNetwork
-from unetr_pp.network_architecture.dynunet_block import UnetOutBlock, UnetResBlock
-from unetr_pp.network_architecture.tumor.model_components import UnetrPPEncoder, UnetrUpBlock
+from modules.unetr_pp_modules.neural_network import SegmentationNetwork
+from modules.unetr_pp_modules.dynunet_block import UnetOutBlock, UnetResBlock
+from modules.unetr_pp_modules.tumor.model_components import UnetrPPEncoder, UnetrUpBlock
 
 
 class UNETR_PP(SegmentationNetwork):

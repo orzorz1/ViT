@@ -1,26 +1,26 @@
 from commons.tool import listdir
-from monai.networks.nets.unetr import UNETR
+from models.UNETR_pp import UNETR_PP
 
-patch_size = [128, 128, 32]
+patch_size = (128, 128, 32)
 
 ViT_patch_size = 16
 num_classes = 1
 channel_in = 1
 
 model_lr = 0.0001
-batch_size = 30
+batch_size = 36
 batch_size_val = 4
 epochs = 100
 train_step = 3
-model = UNETR(in_channels=channel_in, out_channels=num_classes, img_size=patch_size)
+model = UNETR_PP(in_channels=1, out_channels=1, patch_size=patch_size, dims=(32, 64, 128, 256),do_ds=False)
 
 train_model_path = ""  # 从0开始训练填""
-pre_model_path = "./UNETR_CHAOSct_3.pth"
-trainOrPredict = "predict"  # "train" or "predict"
+pre_model_path = ""
+trainOrPredict = "train"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
 save_log = False  # 是否记录训练日志
-saveModel_name = "UNETR_CHAOSct"
-saveImage_name = "UNETR_CHAOSct_pre"
+saveModel_name = "UNETRpp_CHAOSct"
+saveImage_name = "UNETRpp_CHAOSct_pre"
 
 train_image_path = '../dataset/Task20_CHAOSct/imagesTr'
 train_label_path = '../dataset/Task20_CHAOSct/labelsTr'

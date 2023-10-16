@@ -11,7 +11,7 @@ from commons.plot import save_nii
 import torchsummary
 np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
-from config.config_SwinUNETR import *
+from config.config_UNETRpp import *
 from commons.log import make_print_to_file
 from torch.cuda.amp import autocast as autocast, GradScaler
 
@@ -35,7 +35,6 @@ class BaseTrainHelper(object):
         model.to(device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=model_lr)
         print(torch.cuda.memory_summary())
-        torchsummary.summary(model, (1,128,128,32), batch_size=batch_size, device="cuda")
         # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, [epochs//3, epochs//3*2], 0.1)
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))

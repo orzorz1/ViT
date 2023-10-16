@@ -2,15 +2,114 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c07fec7b-3ca1-496f-9745-4b04bda2d9e1" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/remote-mappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SwinUNETR_helper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UNETR_helper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config_SwinUNETR.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config_UNETR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ViT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ViT.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UNETRpp_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/config_UNETRpp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/3DUXNet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/_ext/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/ca.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/ca.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/lib_cffi.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/lib_cffi.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/crf/dense_crf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/_ext/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/_ext/deform_conv/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/_ext/modulated_dcn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/build_modulated.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/functions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/functions/deform_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/functions/modulated_dcn_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/make.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/make_p100.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/modules/deform_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/modules/modulated_dcn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/deform_psroi_pooling_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/deform_psroi_pooling_cuda.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/modulated_deform_im2col_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/modulated_deform_im2col_cuda.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda_kernel.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda_kernel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn_cuda.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn_cuda.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/test_modulated.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/frn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/frn/frn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/bn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/bn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/misc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/checks.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn_cuda_half.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/utils/checks.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/utils/common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/utils/cuda.cuh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/pac.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/paccrf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/test_pac.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/data_container.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/data_parallel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/distributed.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/scatter_gather.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/switchablenorms/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/switchablenorms/switchable_norm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/allreduce.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/comm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/device_tensor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/operator.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/operator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/syncbn_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/syncbn_kernel.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/module_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/UXNet/uxnet_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SwinUNETR_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/SwinUNETR_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UNETR_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/UNETR_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_SwinUNETR.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_SwinUNETR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_UNETR.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_UNETR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_ViT.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_ViT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DenseUNet2D.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DenseUNet3D.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/UNETR_pp.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/UNETR_pp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/neural_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/model_components.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/model_components.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/transformerblock.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/transformerblock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/unetr_pp_tumor.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/unetr_pp_tumor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,18 +154,91 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/modules/UXNet" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules\UXNet" />
+      <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules" />
       <recent name="G:\file\Project\Deng\code\segmentation\ViT" />
+      <recent name="G:\file\Project\Deng\code\segmentation\ViT\config" />
+      <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules\unetr_pp_modules\tumor" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules\3DUXNet" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.UNETR_helper">
-    <configuration name="SwinUNETR_helper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.3DUXNet">
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ViT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/commons" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/commons/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="3DUXNet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ViT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/3DUXNet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UNETR_pp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ViT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/UNETR_pp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UNETRpp_helper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ViT" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -79,7 +251,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SwinUNETR_helper.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UNETRpp_helper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -88,7 +260,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="UNETR_helper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ViT" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -96,34 +268,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/commons" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UNETR_helper.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="config_SwinUNETR" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ViT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/config" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config/config_SwinUNETR.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/commons/evaluation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,9 +284,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.UNETR_helper" />
-        <item itemvalue="Python.SwinUNETR_helper" />
-        <item itemvalue="Python.config_SwinUNETR" />
+        <item itemvalue="Python.3DUXNet" />
+        <item itemvalue="Python.1" />
+        <item itemvalue="Python.evaluation" />
+        <item itemvalue="Python.UNETRpp_helper" />
+        <item itemvalue="Python.UNETR_pp" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +301,8 @@
       <option name="presentableId" value="Default" />
       <updated>1695641698816</updated>
       <workItem from="1695641701889" duration="770000" />
-      <workItem from="1697299098834" duration="5376000" />
+      <workItem from="1697299098834" duration="15142000" />
+      <workItem from="1697388630297" duration="13160000" />
     </task>
     <servers />
   </component>
@@ -157,8 +310,13 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ViT$UNETR_helper.coverage" NAME="UNETR_helper 覆盖结果" MODIFIED="1697306979048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$1.coverage" NAME="1 覆盖结果" MODIFIED="1697455895787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/commons" />
+    <SUITE FILE_PATH="coverage/ViT$UNETR_helper.coverage" NAME="UNETR_helper 覆盖结果" MODIFIED="1697359198314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$evaluation.coverage" NAME="evaluation 覆盖结果" MODIFIED="1697454224628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/commons" />
+    <SUITE FILE_PATH="coverage/ViT$UNETR_pp.coverage" NAME="UNETR_pp 覆盖结果" MODIFIED="1697444831041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/ViT$3DUXNet.coverage" NAME="3DUXNet 覆盖结果" MODIFIED="1697456137881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/ViT$config_SwinUNETR.coverage" NAME="config_SwinUNETR 覆盖结果" MODIFIED="1697304890818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
-    <SUITE FILE_PATH="coverage/ViT$SwinUNETR_helper.coverage" NAME="SwinUNETR_helper 覆盖结果" MODIFIED="1697305521287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$SwinUNETR_helper.coverage" NAME="SwinUNETR_helper 覆盖结果" MODIFIED="1697385095616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$UNETRpp_helper.coverage" NAME="UNETRpp_helper 覆盖结果" MODIFIED="1697445443622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

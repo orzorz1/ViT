@@ -188,7 +188,7 @@ metric = {"Dice": dice_coef,
 for key, value in metric.items():
     print(key)
     for n in range(0,5):
-        path_x = "../save/ViT/3/pre/ViT_CHAOSct_pre_"+str(n)+".nii.gz"
+        path_x = "../save/SwinUNETR/pre/SwinUNETR_CHAOSct_pre_"+str(n)+".nii.gz"
         x = read_nii(path_x)
         x = torch.tensor(x)
         # path_y = "../dataset/CHAOS_Train_Sets_nifti_mr_Label/"+str(n+36)+"_segmentation_T1DUAL.nii.gz"

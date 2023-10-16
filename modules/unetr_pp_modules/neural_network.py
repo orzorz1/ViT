@@ -15,14 +15,39 @@
 
 import numpy as np
 from batchgenerators.augmentations.utils import pad_nd_image
-from unetr_pp.utilities.random_stuff import no_op
-from unetr_pp.utilities.to_torch import to_cuda, maybe_to_torch
+
 from torch import nn
 import torch
 from scipy.ndimage.filters import gaussian_filter
 from typing import Union, Tuple, List
 
 from torch.cuda.amp import autocast
+import torch
+
+
+class no_op(object):
+    def __enter__(self):
+        pass
+
+    def __exit__(self, *args):
+        pass
+
+
+def maybe_to_torch(d):
+    if isinstance(d, list):
+        d = [maybe_to_torch(i) if not isinstance(i, torch.Tensor) else i for i in d]
+    elif not isinstance(d, torch.Tensor):
+        d = torch.from_numpy(d).float()
+    return d
+
+
+def to_cuda(data, non_blocking=True, gpu_id=0):
+    if isinstance(data, list):
+        data = [i.cuda(gpu_id, non_blocking=non_blocking) for i in data]
+    else:
+        data = data.cuda(gpu_id, non_blocking=non_blocking)
+    return data
+
 
 
 class NeuralNetwork(nn.Module):

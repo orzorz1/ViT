@@ -19,7 +19,6 @@ try:
 except ImportError:
     from urllib.request import urlretrieve
 
-from lib.utils.tools.logger import Logger as Log
 from torch.nn.functional import interpolate
 
 
@@ -38,13 +37,13 @@ class ModuleHelper(object):
                 nn.ReLU()
             )
         elif bn_type == 'syncbn':
-            from lib.extensions.syncbn.module import BatchNorm2d
+            from modules.UXNet.extensions.syncbn.module import BatchNorm2d
             return nn.Sequential(
                 BatchNorm2d(num_features, **kwargs),
                 nn.ReLU()
             )
         elif bn_type == 'sn':
-            from lib.extensions.switchablenorms.switchable_norm import SwitchNorm2d
+            from modules.UXNet.extensions.switchablenorms.switchable_norm import SwitchNorm2d
             return nn.Sequential(
                 SwitchNorm2d(num_features, **kwargs),
                 nn.ReLU()
@@ -55,23 +54,19 @@ class ModuleHelper(object):
                 nn.ReLU()
             )
         elif bn_type == 'fn':
-            Log.error('Not support Filter-Response-Normalization: {}.'.format(bn_type))
             exit(1)
         elif bn_type == 'inplace_abn':
             torch_ver = torch.__version__[:3]
             # Log.info('Pytorch Version: {}'.format(torch_ver))
             if torch_ver == '0.4':
-                from lib.extensions.inplace_abn.bn import InPlaceABNSync
+                from modules.UXNet.extensions.inplace_abn.bn import InPlaceABNSync
                 return InPlaceABNSync(num_features, **kwargs)
             elif torch_ver in ('1.0', '1.1'):
-                from lib.extensions.inplace_abn_1.bn import InPlaceABNSync
-                return InPlaceABNSync(num_features, **kwargs)
-            elif torch_ver == '1.2':
-                from inplace_abn import InPlaceABNSync
+                from modules.UXNet.extensions.inplace_abn_1.bn import InPlaceABNSync
                 return InPlaceABNSync(num_features, **kwargs)
 
+
         else:
-            Log.error('Not support BN type: {}.'.format(bn_type))
             exit(1)
 
     @staticmethod
@@ -83,11 +78,11 @@ class ModuleHelper(object):
             return nn.SyncBatchNorm
 
         elif bn_type == 'syncbn':
-            from lib.extensions.syncbn.module import BatchNorm2d
+            from modules.UXNet.extensions.syncbn.module import BatchNorm2d
             return BatchNorm2d
 
         elif bn_type == 'sn':
-            from lib.extensions.switchablenorms.switchable_norm import SwitchNorm2d
+            from modules.UXNet.extensions.switchablenorms.switchable_norm import SwitchNorm2d
             return SwitchNorm2d
 
         elif bn_type == 'gn':
@@ -96,28 +91,20 @@ class ModuleHelper(object):
         elif bn_type == 'inplace_abn':
             torch_ver = torch.__version__[:3]
             if torch_ver == '0.4':
-                from lib.extensions.inplace_abn.bn import InPlaceABNSync
+                from modules.UXNet.extensions.inplace_abn.bn import InPlaceABNSync
                 if ret_cls:
                     return InPlaceABNSync
 
                 return functools.partial(InPlaceABNSync, activation='none')
 
             elif torch_ver in ('1.0', '1.1'):
-                from lib.extensions.inplace_abn_1.bn import InPlaceABNSync
+                from modules.UXNet.extensions.inplace_abn_1.bn import InPlaceABNSync
                 if ret_cls:
                     return InPlaceABNSync
 
                 return functools.partial(InPlaceABNSync, activation='none')
 
-            elif torch_ver == '1.2':
-                from inplace_abn import InPlaceABNSync
-                if ret_cls:
-                    return InPlaceABNSync
-
-                return functools.partial(InPlaceABNSync, activation='identity')
-
         else:
-            Log.error('Not support BN type: {}.'.format(bn_type))
             exit(1)
 
     @staticmethod
@@ -126,7 +113,6 @@ class ModuleHelper(object):
             return model
 
         if all_match:
-            Log.info('Loading pretrained model:{}'.format(pretrained))
             pretrained_dict = torch.load(pretrained, map_location=lambda storage, loc: storage)
             model_dict = model.state_dict()
             load_dict = dict()
@@ -138,7 +124,6 @@ class ModuleHelper(object):
             model.load_state_dict(load_dict)
 
         else:
-            Log.info('Loading pretrained model:{}'.format(pretrained))
             pretrained_dict = torch.load(pretrained, map_location=lambda storage, loc: storage)
 
             # settings for "wide_resnet38"  or network == "resnet152"
@@ -173,7 +158,6 @@ class ModuleHelper(object):
 
             elif network == 'pcpvt' or network == 'svt':
                 load_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict.keys()}
-                Log.info('Missing keys: {}'.format(list(set(model_dict) - set(load_dict))))
 
             elif network == 'transunet_swin':
                 pretrained_dict = {k: v for k, v in pretrained_dict.items() if
@@ -202,7 +186,6 @@ class ModuleHelper(object):
 
             elif network == "hrnet" or network == "xception" or network == 'resnest':
                 load_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict.keys()}
-                Log.info('Missing keys: {}'.format(list(set(model_dict) - set(load_dict))))
 
             elif network == "dcnet" or network == "resnext":
                 load_dict = dict()
@@ -226,9 +209,8 @@ class ModuleHelper(object):
 
             # used to debug
             if int(os.environ.get("debug_load_model", 0)):
-                Log.info('Matched Keys List:')
                 for key in load_dict.keys():
-                    Log.info('{}'.format(key))
+                    pass
             model_dict.update(load_dict)
             model.load_state_dict(model_dict)
 
@@ -243,10 +225,8 @@ class ModuleHelper(object):
         filename = url.split('/')[-1]
         cached_file = os.path.join(model_dir, filename)
         if not os.path.exists(cached_file):
-            Log.info('Downloading: "{}" to {}\n'.format(url, cached_file))
             urlretrieve(url, cached_file)
 
-        Log.info('Loading pretrained model:{}'.format(cached_file))
         return torch.load(cached_file, map_location=map_location)
 
     @staticmethod

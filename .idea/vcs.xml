@@ -3,6 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/commons/segment-anything" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/3DUX-Net" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/reference/HDenseUet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/unetr_plus_plus" vcs="Git" />
   </component>
 </project>

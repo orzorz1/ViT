@@ -15,8 +15,8 @@ train_step = 3
 model = SwinUNETR(in_channels=channel_in, out_channels=num_classes, img_size=patch_size)
 
 train_model_path = ""  # 从0开始训练填""
-pre_model_path = ""
-trainOrPredict = "train"  # "train" or "predict"
+pre_model_path = "./SwinUNETR_CHAOSct_3.pth"
+trainOrPredict = "predict"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
 save_log = False  # 是否记录训练日志
 saveModel_name = "SwinUNETR_CHAOSct"

@@ -3,20 +3,21 @@ from timm.models.layers import trunc_normal_
 from typing import Sequence, Tuple, Union
 from monai.networks.layers.utils import get_norm_layer
 from monai.utils import optional_import
-from unetr_pp.network_architecture.layers import LayerNorm
-from unetr_pp.network_architecture.tumor.transformerblock import TransformerBlock
-from unetr_pp.network_architecture.dynunet_block import get_conv_layer, UnetResBlock
+from modules.unetr_pp_modules.layers import LayerNorm
+from modules.unetr_pp_modules.tumor.transformerblock import TransformerBlock
+from modules.unetr_pp_modules.dynunet_block import get_conv_layer, UnetResBlock
 
 
 einops, _ = optional_import("einops")
 
 class UnetrPPEncoder(nn.Module):
-    def __init__(self, input_size=[32 * 32 * 32, 16 * 16 * 16, 8 * 8 * 8, 4 * 4 * 4],dims=[32, 64, 128, 256],
-                 proj_size =[64,64,64,32], depths=[3, 3, 3, 3],  num_heads=4, spatial_dims=3, in_channels=4,
+    def __init__(self, input_size=(32 * 32 * 32, 16 * 16 * 16, 8 * 8 * 8, 4 * 4 * 4),dims=(32, 64, 128, 256),
+                 proj_size =(64,64,64,32), depths=(3, 3, 3, 3),  num_heads=4, spatial_dims=3, in_channels=4,
                  dropout=0.0, transformer_dropout_rate=0.1 ,**kwargs):
         super().__init__()
 
         self.downsample_layers = nn.ModuleList()  # stem and 3 intermediate downsampling conv layers
+
         stem_layer = nn.Sequential(
             get_conv_layer(spatial_dims, in_channels, dims[0], kernel_size=(4, 4, 4), stride=(4, 4, 4),
                            dropout=dropout, conv_only=True, ),

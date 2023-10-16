@@ -131,13 +131,13 @@ class BaseTrainHelper(object):
                 batch_x, batch_y = torch.autograd.Variable(batch_x.to(device)), torch.autograd.Variable(
                     batch_y.to(device))
 
-                out = model(batch_x)[0]
+                out = model(batch_x)
                     # with autocast():
                     #     out = model(batch_x)
                 out = out.cpu().detach().numpy()
                 for i in range(out.shape[0]):
                     position = [0, 0, 0]
-                    o = out[i]
+                    o = out[i][0]
                     for j in range(len(p)):
                         position[j] = p[j].cpu().numpy().tolist()[i]
                     predict[position[0]:position[0] + patch_size[0], position[1]:position[1] + patch_size[1],
