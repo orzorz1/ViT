@@ -2,114 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c07fec7b-3ca1-496f-9745-4b04bda2d9e1" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/UNETRpp_helper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config_UNETRpp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/3DUXNet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/_ext/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/build.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/ca.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/ca.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/common.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/lib_cffi.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/cc_attention/src/lib_cffi.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/crf/dense_crf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/_ext/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/_ext/deform_conv/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/_ext/modulated_dcn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/build.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/build_modulated.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/functions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/functions/deform_conv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/functions/modulated_dcn_func.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/make.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/make_p100.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/modules/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/modules/deform_conv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/modules/modulated_dcn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/deform_psroi_pooling_cuda.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/deform_psroi_pooling_cuda.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/modulated_deform_im2col_cuda.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/cuda/modulated_deform_im2col_cuda.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda_kernel.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/deform_conv_cuda_kernel.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn_cuda.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/src/modulated_dcn_cuda.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/dcn/test_modulated.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/frn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/frn/frn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/bn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/common.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn_cpu.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn/src/inplace_abn_cuda.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/bn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/misc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/checks.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn_cpu.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn_cuda.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/inplace_abn_cuda_half.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/utils/checks.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/utils/common.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/inplace_abn_1/src/utils/cuda.cuh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/pac.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/paccrf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/pacnet/test_pac.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/data_container.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/data_parallel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/distributed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/parallel/scatter_gather.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/switchablenorms/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/switchablenorms/switchable_norm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/allreduce.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/comm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/common.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/device_tensor.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/operator.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/operator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/syncbn_cpu.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/extensions/syncbn/src/syncbn_kernel.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/module_helper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/UXNet/uxnet_encoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ViT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ViT.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SwinUNETR_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/SwinUNETR_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UNETR_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/UNETR_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_SwinUNETR.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_SwinUNETR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_UNETR.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_UNETR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_ViT.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_ViT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DenseUNet2D.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DenseUNet3D.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/UNETR_pp.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/UNETR_pp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/neural_network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/model_components.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/model_components.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/transformerblock.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/transformerblock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/unetr_pp_tumor.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unetr_pp_modules/tumor/unetr_pp_tumor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +32,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="2Vt3l1yp1mUX9kpKq7dwTpTiDJJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -154,7 +57,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/modules/UXNet" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -302,7 +205,8 @@
       <updated>1695641698816</updated>
       <workItem from="1695641701889" duration="770000" />
       <workItem from="1697299098834" duration="15142000" />
-      <workItem from="1697388630297" duration="13160000" />
+      <workItem from="1697388630297" duration="13420000" />
+      <workItem from="1697456926072" duration="21000" />
     </task>
     <servers />
   </component>
