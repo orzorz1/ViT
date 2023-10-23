@@ -6,8 +6,7 @@ from monai.networks.blocks.dynunet_block import UnetOutBlock
 from monai.networks.blocks.unetr_block import UnetrBasicBlock, UnetrUpBlock
 from typing import Union
 import torch.nn.functional as F
-from modules.UXNet.module_helper import ModuleHelper
-from modules.UXNet.uxnet_encoder import uxnet_conv
+from modules.uxnet_encoder import uxnet_conv, BNReLU
 
 
 class ProjectionHead(nn.Module):
@@ -19,13 +18,12 @@ class ProjectionHead(nn.Module):
         elif proj == 'convmlp':
             self.proj = nn.Sequential(
                 nn.Conv3d(dim_in, dim_in, kernel_size=1),
-                ModuleHelper.BNReLU(dim_in, bn_type=bn_type),
+                BNReLU(dim_in, bn_type=bn_type),
                 nn.Conv3d(dim_in, proj_dim, kernel_size=1)
             )
 
     def forward(self, x):
         return F.normalize(self.proj(x), p=2, dim=1)
-
 
 
 class UXNET(nn.Module):
@@ -240,10 +238,12 @@ class UXNET(nn.Module):
 
         return self.out(out)
 
+
 import torch
+
 if __name__ == "__main__":
-    model = UXNET(in_chans=1,out_chans=1)
-    x = torch.randn([5,1,128,128,32])
+    model = UXNET(in_chans=1, out_chans=3, )
+    x = torch.randn([2, 1, 128, 128, 32])
     print(x.shape)
     y = model(x)
     print(y.shape)
