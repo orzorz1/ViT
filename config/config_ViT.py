@@ -1,5 +1,5 @@
 from commons.tool import listdir
-from models.ViT import ViTSeg
+from monai.networks.nets.vit import ViT
 
 patch_size = [128, 128, 32]
 
@@ -12,8 +12,7 @@ batch_size = 3
 batch_size_val = 2
 epochs = 100
 train_step = 3
-model = ViTSeg(image_size=patch_size, patch_size=ViT_patch_size, num_classes=num_classes,
-               dim= 2048, depth=24, heads=48, mlp_dim=4096, channels=channel_in, learned_pos=False, use_token=True)
+model = ViT(in_channels=1, patch_size=ViT_patch_size, num_classes=num_classes,img_size=patch_size)
 
 train_model_path = ""  # 从0开始训练填""
 pre_model_path = "./save/ViT/3/model/ViTseg_3.pth"
