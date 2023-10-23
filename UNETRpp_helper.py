@@ -3,7 +3,7 @@ os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 import numpy as np
 from modules.functions import dice_loss, ce_loss,bce_loss, adjust_learning_rate, sigmoid
 from commons.plot import save_nii, draw, draw1, save_nii_
-from data.LoadData import *
+from data.LoadData_LiTS17 import *
 from torch.utils.data import DataLoader
 import torch
 import math
@@ -39,7 +39,7 @@ class BaseTrainHelper(object):
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))
             val_data = load_dataset_one(test_image_list, test_label_list, 1, patch_size)
-            dataset = load_dataset(train_image_list, train_label_list, 0, 14, i, patch_size)
+            dataset = load_dataset(train_image_list, train_label_list, 0, 99, i, patch_size)
             train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
             val_loader = DataLoader(dataset=val_data, batch_size=batch_size_val)
             for epoch in range(epochs):
@@ -52,14 +52,14 @@ class BaseTrainHelper(object):
                     optimizer.zero_grad()
                     if openAMP == False:
                         out = model(batch_x)
-                        loss = bce_loss(out, batch_y)
+                        loss = ce_loss(out, batch_y)
                         loss.backward()
                         optimizer.step()
                         # print(torch.cuda.memory_summa y())
                     else:
                         with autocast():
                             out = model(batch_x)
-                            loss = bce_loss(out, batch_y)
+                            loss = ce_loss(out, batch_y)
                         scaler.scale(loss).backward()
                         nn.utils.clip_grad_norm_(model.parameters(), max_norm=20, norm_type=2) #梯度裁剪,防止梯度爆炸
                         scaler.unscale_(optimizer)
@@ -81,10 +81,10 @@ class BaseTrainHelper(object):
                     if openAMP == False:
                         out = model(batch_x)
                         # loss, l, n = dice_loss(out, batch_y)
-                        loss = bce_loss(out, batch_y)
+                        loss = ce_loss(out, batch_y)
                     else:
                         out = model(batch_x)
-                        loss = bce_loss(out, batch_y)
+                        loss = ce_loss(out, batch_y)
                         # with autocast():
                         #     out = model(batch_x)
                         #     loss = ce_loss(out, batch_y)
@@ -96,9 +96,13 @@ class BaseTrainHelper(object):
                         save_nii(batch_y.cpu().numpy().astype(np.int16)[0][0],'{name}-{e}-{batch}Y'.format(name=i, e=epoch+1, batch=batch))
                         out = np.around(sigmoid(out.cpu().detach().numpy()[0]))
                         save_nii(out[0], '{name}-{e}-{batch}Out0'.format(name=i, e=epoch+1, batch=batch))
+                        save_nii(out[1], '{name}-{e}-{batch}Out1'.format(name=i, e=epoch + 1, batch=batch))
+                        save_nii(out[2], '{name}-{e}-{batch}Out2'.format(name=i, e=epoch + 1, batch=batch))
 
                 print('Val Loss: %.6f' % (eval_loss / (math.ceil(len(val_data) / batch_size_val))))
                 loss_val.append((eval_loss / (math.ceil(len(val_data) / batch_size))))
+            del val_data, dataset, train_loader, val_loader
+            gc.collect()
             torch.save(model.state_dict(), saveModel_name+"_"+str(i)+".pth")
             draw1(loss_train, "{i}-train".format(i=i))
             draw1(loss_val, "{i}-val".format(i=i))
@@ -122,7 +126,7 @@ class BaseTrainHelper(object):
             print(path_x)
             x1 = read_dataset(path_x)
             print(x1.shape)
-            x = np.zeros(( x1.shape[0], x1.shape[1], x1.shape[2]))
+            x = np.zeros((num_classes, x1.shape[0], x1.shape[1], x1.shape[2]))
             predict = np.zeros_like(x)
             count = np.zeros_like(x)
             for batch, (batch_x, batch_y, p) in enumerate(val_loader):
@@ -136,18 +140,20 @@ class BaseTrainHelper(object):
                 out = out.cpu().detach().numpy()
                 for i in range(out.shape[0]):
                     position = [0, 0, 0]
-                    o = out[i][0]
+                    o = out[i]
                     for j in range(len(p)):
                         position[j] = p[j].cpu().numpy().tolist()[i]
-                    predict[position[0]:position[0] + patch_size[0], position[1]:position[1] + patch_size[1],
+                    predict[0:num_classes, position[0]:position[0] + patch_size[0], position[1]:position[1] + patch_size[1],
                     position[2]:position[2] + patch_size[2]] += o
-                    count[position[0]:position[0] + patch_size[0], position[1]:position[1] + patch_size[1],
+                    count[0:num_classes, position[0]:position[0] + patch_size[0], position[1]:position[1] + patch_size[1],
                     position[2]:position[2] + patch_size[2]] += np.ones_like(o)
 
             pre = predict / count
+            print(pre.shape)
             pre[np.isnan(pre)] = 0.0001
-            pre = np.around(sigmoid(pre)-0.0001)
-            # pre = torch.max(nn.Softmax(dim=0)(pre), 0)[1].cpu().detach().numpy()
+            pre = torch.tensor(pre).to(device)
+            # pre = np.around(sigmoid(pre)-0.0001)
+            pre = torch.max(nn.Softmax(dim=0)(pre), 0)[1].cpu().detach().numpy()
             print(pre.shape)
             save_nii_(pre.astype(np.int16), saveImage_name+"_"+str(index), path_x)
 
@@ -158,8 +164,10 @@ if __name__ == '__main__':
     NetWork = BaseTrainHelper()
     if trainOrPredict == "train":
         NetWork.train(train_model_path)
+        print(pre_model_path)
+        NetWork.predct(0, 30, pre_model_path)
     else:
         print(pre_model_path)
-        NetWork.predct(0, 4, pre_model_path)
+        NetWork.predct(0, 30, pre_model_path)
 
-    os.system("shutdown")
+    # os.system("shutdown")
