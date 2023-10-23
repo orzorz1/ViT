@@ -344,12 +344,12 @@ class HDenseUNet(nn.Module):
         input3d = res2d.permute(0, 2, 1, 3, 4)
         feature2d = fea2d.permute(0, 2, 1, 3, 4)
 
-        input3d_tmp = input3d  #这里应该是input3d*250
+        input3d_tmp = input3d
         input3d_tmp *= 250.0
         x_tmp = x.unsqueeze(1)
 
 
-        in3d = torch.cat((x_tmp, input3d_tmp), 1)  #应该是原始的x与input3d*250 cat
+        in3d = torch.cat((x_tmp, input3d_tmp), 1)
 
         feature3d = self.dense3d(in3d)
         output3d = self.conv3d5(feature3d)

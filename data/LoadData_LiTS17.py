@@ -1,3 +1,4 @@
+import sys
 import numpy
 import numpy as np
 import nibabel as nib
@@ -7,6 +8,8 @@ import torch.nn as nn
 import random
 np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
+import gc
+from memory_profiler import profile
 
 def get_bounding_box(img):
     width, height, deep = img.shape
@@ -47,40 +50,41 @@ def get_bounding_box(img):
         if (img_z * a).sum() != 0:
             box[5] = deep-i-1
             break
-    return box
+    del img_x,img_y,img_z,a
+    gc.collect()
 
+    return box
 
 def setHU(img_arr, min, max):
     img_arr = np.clip(img_arr, min, max)
     img_arr = img_arr.astype(np.float32)
     return img_arr
 
-
 def set_label(x):
-    if x != 1:
-        x = 0
+
     return x
 
 # (width, height, deep) -> (channel, deep, width, height)
 def reshape(pic):
     pic = np.expand_dims(pic, axis=0)
     return pic
-
-
 def read_dataset(path):
     img = nib.load(path)
     img_arr = np.array(img.dataobj)
     img_arr = setHU(img_arr, -200, 250)
-    return img_arr
+    del img
+    gc.collect()
 
+    return img_arr
 def read_dataset_test(path):
     img = nib.load(path)
     img_arr = np.array(img.dataobj)
     # img_arr = img_arr * 2400 / 256 - 1000
     img_arr = setHU(img_arr, -200, 250)
-    img_arr = img_arr
-    return img_arr
+    del img
+    gc.collect()
 
+    return img_arr
 def read_label(path):
     img = nib.load(path)
     img_arr = np.array(img.dataobj)
@@ -88,8 +92,9 @@ def read_label(path):
     out = triangle_ufunc1(img_arr)
     out = out.astype(np.float)
     # out = img_arr
+    del img, img_arr, triangle_ufunc1
+    gc.collect()
     return out
-
 # 从一个图像中随机取包含肿瘤的patch
 def get_patchs_from_one_img(img_x, img_y, patch_size, number):
     # random.seed(123)
@@ -121,17 +126,21 @@ def get_patchs_from_one_img(img_x, img_y, patch_size, number):
 # 将从多张图片取的随机patch组合在一起
 def get_patches(dirX, dirY, begin, end, patch_size, seed):
     random.seed(seed)
-    patches_x = []
-    patches_y = []
-    l =  [x for x in range(begin, end+1)]
+    patches_X = np.array([1])
+    patches_Y = np.array([1])
+    l = [x for x in range(begin, end+1)]
     random.shuffle(l)
     for i in l:
+        patches_x = []
+        patches_y = []
+        gc.collect()
+        print("正在加载第", i, "张图像")
         path_x = dirX[i]
         x = read_dataset(path_x)
         path_y = dirY[i]
         y = read_label(path_y)
-        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 20)
-        for j in range(20):
+        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 16)  #
+        for j in range(16):
             patches_x.append(x1[j])
             patches_y.append(y1[j])
         x2 = np.array(mean_patch(reshape(x), patch_size, 1))
@@ -139,15 +148,22 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         permutation = np.random.permutation(x2.shape[0])
         x2 = x2[permutation]
         y2 = y2[permutation]
-        for j in range(10):
+        for j in range(8):  #
             x2[j][0] = x2[j][0].astype(np.float32)
             patches_x.append(x2[j])
             patches_y.append(y2[j][0])
-    patches_x = np.array(patches_x)
-    patches_y = np.array(patches_y)
-    print(patches_x.shape)
-    print(patches_y.shape)
-    return patches_x, patches_y
+        del x, y, x1, y1, x2, y2
+        patches_x = np.array(patches_x)
+        patches_y = np.array(patches_y)
+        if i == l[0]:
+            patches_X = patches_x
+            patches_Y = patches_y
+        else:
+            patches_X = np.concatenate((patches_X, patches_x), axis=0)
+            patches_Y = np.concatenate((patches_Y, patches_y), axis=0)
+    print(patches_X.shape)
+    print(patches_Y.shape)
+    return patches_X, patches_Y
 
 
 class load_dataset_one(Dataset):
@@ -161,6 +177,7 @@ class load_dataset_one(Dataset):
         imgs = []
         for i in range(patchs_x.shape[0]):
             imgs.append((patchs_x[i], patchs_y[i]))
+        del x, y, patchs_x, patchs_y
         self.imgs = imgs
 
     def __getitem__(self, index):
@@ -184,6 +201,7 @@ class load_dataset(Dataset):
         imgs = []
         for i in range(patchs_x.shape[0]):
             imgs.append((patchs_x[i], patchs_y[i]))
+        del patchs_x, patchs_y
         self.imgs = imgs
 
     def __getitem__(self, index):
@@ -236,6 +254,7 @@ def mean_patch(img_arr, size, overlap_factor):
     patch.append(img_arr[:, i:i + patch_size[0], j:j + patch_size[1], k:k + patch_size[2]])
     patch.append([i, j, k])
     patchs.append(patch)
+    del img_arr
     return np.array(patchs)
 
 class load_dataset_test(Dataset):
@@ -253,6 +272,7 @@ class load_dataset_test(Dataset):
         imgs = []
         for i in range(len(patchs_x)):
             imgs.append((patchs_x[i], patchs_y[i]))
+        del x, y, patchs_x, patchs_y
         self.imgs = imgs
 
     def __getitem__(self, index):

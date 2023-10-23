@@ -101,6 +101,8 @@ class BaseTrainHelper(object):
 
                 print('Val Loss: %.6f' % (eval_loss / (math.ceil(len(val_data) / batch_size_val))))
                 loss_val.append((eval_loss / (math.ceil(len(val_data) / batch_size))))
+            del val_data, dataset, train_loader, val_loader
+            gc.collect()
             torch.save(model.state_dict(), saveModel_name+"_"+str(i)+".pth")
             draw1(loss_train, "{i}-train".format(i=i))
             draw1(loss_val, "{i}-val".format(i=i))
