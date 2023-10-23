@@ -2,9 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/reference/3DUX-Net" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/reference/HDenseUet" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/reference/Segformer3D" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/reference/unetr_plus_plus" vcs="Git" />
   </component>
 </project>
