@@ -11,7 +11,7 @@ from commons.plot import save_nii
 import torchsummary
 np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
-from config.config_UNETRpp import *
+from config.LiTS17.config_resnet18 import *
 from commons.log import make_print_to_file
 from torch.cuda.amp import autocast as autocast, GradScaler
 

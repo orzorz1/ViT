@@ -4,7 +4,7 @@ from monai.networks.nets.vit import ViT
 patch_size = [128, 128, 32]
 
 ViT_patch_size = 16
-num_classes = 2   #这个好像还不能用
+num_classes = 2
 channel_in = 1
 
 model_lr = 0.0001

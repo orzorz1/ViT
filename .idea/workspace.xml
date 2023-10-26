@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c07fec7b-3ca1-496f-9745-4b04bda2d9e1" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/models/network_backbone.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/uxnet_encoder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ResNet_LiTS17_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/LiTS17/config_resnet18.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/save/LiTS17/UNETRpp/config_UNETRpp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UNETRpp_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/UNETRpp_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_ViT.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_ViT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/HDenseUNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/1/HDenseUNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/KiUNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/1/KiUNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ResNet101.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/1/ResNet101.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/新建 Microsoft Excel 工作表.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/save/新建 Microsoft Excel 工作表.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,34 +61,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/Users/lhx/Documents/file/project/Deng/ViT/save/LiTS17/UNETRpp",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/save/LiTS17/UNETRpp" />
+      <recent name="$PROJECT_DIR$/config/LiTS17" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="G:\file\Project\Deng\code\segmentation\ViT" />
       <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules" />
-      <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules\TransBTS" />
-      <recent name="G:\file\Project\Deng\code\segmentation\ViT\models" />
-      <recent name="G:\file\Project\Deng\code\segmentation\ViT\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models/1" />
       <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules" />
       <recent name="G:\file\Project\Deng\code\segmentation\ViT\modules\3DUXNet" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.network_backbone">
+  <component name="RunManager" selected="Python.ResNet_LiTS17_helper">
+    <configuration name="ResNet_LiTS17_helper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ViT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ResNet_LiTS17_helper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="TransBTS_downsample8x_skipconnection (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ViT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,7 +127,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TransBTS_downsample8x_skipconnection (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ViT" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -104,34 +135,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules/TransBTS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/commons" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/TransBTS/TransBTS_downsample8x_skipconnection.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TransBTS_downsample8x_skipconnection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ViT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/TransBTS_downsample8x_skipconnection.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/commons/evaluation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -186,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ResNet_LiTS17_helper" />
+        <item itemvalue="Python.evaluation" />
         <item itemvalue="Python.network_backbone" />
         <item itemvalue="Python.nnFormer_seg" />
         <item itemvalue="Python.TransBTS_downsample8x_skipconnection (1)" />
-        <item itemvalue="Python.TransBTS_downsample8x_skipconnection (2)" />
-        <item itemvalue="Python.TransBTS_downsample8x_skipconnection" />
       </list>
     </recent_temporary>
   </component>
@@ -225,18 +234,21 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ViT$TransBTS_downsample8x_skipconnection__1_.coverage" NAME="TransBTS_downsample8x_skipconnection (1) 覆盖结果" MODIFIED="1698061084723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules/TransBTS/TransBTS" />
-    <SUITE FILE_PATH="coverage/ViT$TransBTS_downsample8x_skipconnection.coverage" NAME="TransBTS_downsample8x_skipconnection 覆盖结果" MODIFIED="1698060672536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
-    <SUITE FILE_PATH="coverage/ViT$TransBTS_downsample8x_skipconnection__2_.coverage" NAME="TransBTS_downsample8x_skipconnection (2) 覆盖结果" MODIFIED="1698060761731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules/TransBTS" />
-    <SUITE FILE_PATH="coverage/ViT$config_SwinUNETR.coverage" NAME="config_SwinUNETR 覆盖结果" MODIFIED="1697304890818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/ViT$SwinUNETR_helper.coverage" NAME="SwinUNETR_helper 覆盖结果" MODIFIED="1697385095616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ViT$UNETRpp_helper.coverage" NAME="UNETRpp_helper 覆盖结果" MODIFIED="1697993937685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ViT$1.coverage" NAME="1 覆盖结果" MODIFIED="1697455895787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/commons" />
-    <SUITE FILE_PATH="coverage/ViT$network_backbone.coverage" NAME="network_backbone 覆盖结果" MODIFIED="1698061587291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/ViT$nnFormer_seg.coverage" NAME="nnFormer_seg 覆盖结果" MODIFIED="1698061492717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/networks/nnFormer" />
-    <SUITE FILE_PATH="coverage/ViT$UNETR_helper.coverage" NAME="UNETR_helper 覆盖结果" MODIFIED="1697359198314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ViT$evaluation.coverage" NAME="evaluation 覆盖结果" MODIFIED="1697454224628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/commons" />
+    <SUITE FILE_PATH="coverage/ViT$SegFormer.coverage" NAME="SegFormer 覆盖结果" MODIFIED="1696816033552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/reference/Segformer3D/src" />
+    <SUITE FILE_PATH="coverage/ViT$evaluation.coverage" NAME="evaluation 覆盖结果" MODIFIED="1698117101185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/commons" />
+    <SUITE FILE_PATH="coverage/ViT$TransBTS_downsample8x_skipconnection.coverage" NAME="TransBTS_downsample8x_skipconnection 覆盖结果" MODIFIED="1698060672536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/ViT$UNETRpp_helper.coverage" NAME="UNETRpp_helper 覆盖结果" MODIFIED="1698034197897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$TransBTS_downsample8x_skipconnection__2_.coverage" NAME="TransBTS_downsample8x_skipconnection (2) 覆盖结果" MODIFIED="1698060761731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules/TransBTS" />
     <SUITE FILE_PATH="coverage/ViT$UNETR_pp.coverage" NAME="UNETR_pp 覆盖结果" MODIFIED="1697444831041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/ViT$3DUXNet.coverage" NAME="3DUXNet 覆盖结果" MODIFIED="1697456137881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/ViT$TransBTS_downsample8x_skipconnection__1_.coverage" NAME="TransBTS_downsample8x_skipconnection (1) 覆盖结果" MODIFIED="1698061084723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules/TransBTS/TransBTS" />
+    <SUITE FILE_PATH="coverage/ViT$config_SwinUNETR.coverage" NAME="config_SwinUNETR 覆盖结果" MODIFIED="1697304890818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
+    <SUITE FILE_PATH="coverage/ViT$SegFormer__1_.coverage" NAME="SegFormer (1) 覆盖结果" MODIFIED="1696816104364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/ViT$UNETR_helper.coverage" NAME="UNETR_helper 覆盖结果" MODIFIED="1697359198314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$network_backbone.coverage" NAME="network_backbone 覆盖结果" MODIFIED="1698061587291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/ViT$UNet_LiTS17_helper.coverage" NAME="UNet_LiTS17_helper 覆盖结果" MODIFIED="1698118333623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ViT$1.coverage" NAME="1 覆盖结果" MODIFIED="1697455895787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/commons" />
   </component>
 </project>
