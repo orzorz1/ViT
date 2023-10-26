@@ -34,7 +34,7 @@ class BaseTrainHelper(object):
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model.to(device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=model_lr)
-        print(torch.cuda.memory_summary())
+        # print(torch.cuda.memory_summary())
         # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, [epochs//3, epochs//3*2], 0.1)
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))

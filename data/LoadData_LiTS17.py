@@ -153,6 +153,7 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
             patches_x.append(x2[j])
             patches_y.append(y2[j][0])
         del x, y, x1, y1, x2, y2
+        gc.collect()
         patches_x = np.array(patches_x)
         patches_y = np.array(patches_y)
         if i == l[0]:
@@ -178,6 +179,7 @@ class load_dataset_one(Dataset):
         for i in range(patchs_x.shape[0]):
             imgs.append((patchs_x[i], patchs_y[i]))
         del x, y, patchs_x, patchs_y
+        gc.collect()
         self.imgs = imgs
 
     def __getitem__(self, index):
@@ -213,6 +215,7 @@ class load_dataset(Dataset):
 
     def __len__(self):
         return len(self.imgs)
+# 随机取patch
 
 # 均匀取patch
 def mean_patch(img_arr, size, overlap_factor):
@@ -255,6 +258,7 @@ def mean_patch(img_arr, size, overlap_factor):
     patch.append([i, j, k])
     patchs.append(patch)
     del img_arr
+    gc.collect()
     return np.array(patchs)
 
 class load_dataset_test(Dataset):
@@ -273,6 +277,7 @@ class load_dataset_test(Dataset):
         for i in range(len(patchs_x)):
             imgs.append((patchs_x[i], patchs_y[i]))
         del x, y, patchs_x, patchs_y
+        gc.collect()
         self.imgs = imgs
 
     def __getitem__(self, index):
