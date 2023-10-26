@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c07fec7b-3ca1-496f-9745-4b04bda2d9e1" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/reference/ZhouLinKuan/newloader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reference/ZhouLinKuan/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ViT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ViT.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UNETRpp_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/UNETRpp_helper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
