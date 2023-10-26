@@ -36,6 +36,7 @@ class BaseTrainHelper(object):
         optimizer = torch.optim.AdamW(model.parameters(), lr=model_lr)
         print(torch.cuda.memory_summary())
         # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, [epochs//3, epochs//3*2], 0.1)
+        epoch_sum = 0
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))
             val_data = load_dataset_one(test_image_list, test_label_list, 1, patch_size)
@@ -46,7 +47,8 @@ class BaseTrainHelper(object):
                 # training-----------------------------------
                 model.train()
                 train_loss = 0
-                adjust_learning_rate(optimizer, epoch, epochs, 1, model_lr)
+                adjust_learning_rate(optimizer, epoch_sum, epochs*train_step, 1, model_lr)
+                epoch_sum += 1
                 for batch, (batch_x, batch_y, position) in enumerate(train_loader):
                     batch_x, batch_y = torch.autograd.Variable(batch_x.to(device)), torch.autograd.Variable(batch_y.to(device))
                     optimizer.zero_grad()
