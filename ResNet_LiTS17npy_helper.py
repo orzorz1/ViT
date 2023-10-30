@@ -3,7 +3,7 @@ os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 import numpy as np
 from modules.functions import dice_loss, ce_loss,bce_loss, adjust_learning_rate, sigmoid
 from commons.plot import save_nii, draw, draw1, save_nii_
-from data.LoadData_LiTS17 import *
+from data.LoadData_npy_LiTS17 import *
 from torch.utils.data import DataLoader
 import torch
 import math
@@ -39,7 +39,7 @@ class BaseTrainHelper(object):
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))
             val_data = load_dataset_one(test_image_list, test_label_list, 1, patch_size)
-            dataset = load_dataset(train_image_list, train_label_list, 0, 99, i, patch_size)
+            dataset = load_dataset(train_image_list, train_label_list, 0, 1, i, patch_size)
             train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
             val_loader = DataLoader(dataset=val_data, batch_size=batch_size_val)
             for epoch in range(epochs):

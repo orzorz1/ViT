@@ -10,8 +10,8 @@ channel_in = 1
 model_lr = 0.0001
 batch_size = 30
 batch_size_val = 4
-epochs = 100
-train_step = 3
+epochs = 40
+train_step = 5
 model = UNETR_PP(in_channels=channel_in, out_channels=num_classes, patch_size=patch_size, dims=(32, 64, 128, 256),do_ds=False)
 
 train_model_path = ""  # 从0开始训练填""

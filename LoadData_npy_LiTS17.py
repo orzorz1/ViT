@@ -1,3 +1,4 @@
+import os
 import sys
 import numpy
 import numpy as np
@@ -57,7 +58,7 @@ def get_bounding_box(img):
 
 def setHU(img_arr, min, max):
     img_arr = np.clip(img_arr, min, max)
-    img_arr = img_arr.astype(np.float32)
+    img_arr = img_arr.astype(np.int16)
     return img_arr
 
 def set_label(x):
@@ -82,7 +83,7 @@ def read_dataset_test(path):
 
 def read_label(path):
     img_arr = np.load(path)
-    img_arr = img_arr.astype(np.float)
+    img_arr = img_arr.astype(np.int16)
     return img_arr
 
 # 从一个图像中随机取包含肿瘤的patch
@@ -148,7 +149,7 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         x2 = x2[permutation]
         y2 = y2[permutation]
         for j in range(8):  #
-            x2[j][0] = x2[j][0].astype(np.float32)
+            x2[j][0] = x2[j][0].astype(np.int16)
             patches_x.append(x2[j])
             patches_y.append(y2[j][0])
         del x, y, x1, y1, x2, y2
@@ -292,15 +293,17 @@ class load_dataset_test(Dataset):
 
 from config.LiTS17.config_resnet18 import *
 if __name__ == '__main__':
-    for i in range(1, 10):
+    for i in range(1,2):
         print(i)
         patchs_x, patchs_y = get_patches(train_image_list, train_label_list, 0, 99, patch_size, i)
         print("数据加载完成，shape：", patchs_y.shape)
         imgs = []
-        for i in range(patchs_x.shape[0]):
-            imgs.append((patchs_x[i], patchs_y[i]))
+        for j in range(patchs_x.shape[0]):
+            imgs.append((patchs_x[j], patchs_y[j]))
         del patchs_x, patchs_y
-        np.save("train_data_" + str(i), imgs)
+        np.save("train_data_" + str(i)+".npy", imgs)
+        a = np.load("train_data_" + str(i)+".npy",allow_pickle=True)
+os.system("shutdown")
 
 # path = "../dataset/crossmoda2021_ldn_{index}_Label.nii.gz".format(index=1)
 # print(get_bounding_box(img))
