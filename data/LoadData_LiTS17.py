@@ -10,6 +10,7 @@ np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
 import gc
 from memory_profiler import profile
+import time
 
 def get_bounding_box(img):
     width, height, deep = img.shape
@@ -52,7 +53,6 @@ def get_bounding_box(img):
             break
     del img_x,img_y,img_z,a
     gc.collect()
-
     return box
 
 def setHU(img_arr, min, max):
@@ -100,6 +100,7 @@ def get_patchs_from_one_img(img_x, img_y, patch_size, number):
     # random.seed(123)
     patchs_x = []
     patchs_y = []
+    start = time.time()
     box = get_bounding_box(img_y)
     # triangle_ufunc1 = np.frompyfunc(set_label, 1, 1)
     # out = triangle_ufunc1(img_y)
@@ -121,7 +122,9 @@ def get_patchs_from_one_img(img_x, img_y, patch_size, number):
     patchs_x = np.array(patchs_x)
     # patchs_x[index][0]为图像，patchs_x[index][1]为patch顶点在原始图像中的位置
     patchs_y = np.array(patchs_y) # (channel, deep, width, height)
+    print("加载patch耗时：", time.time()-start)
     return patchs_x, patchs_y
+
 
 # 将从多张图片取的随机patch组合在一起
 def get_patches(dirX, dirY, begin, end, patch_size, seed):
@@ -139,7 +142,7 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         x = read_dataset(path_x)
         path_y = dirY[i]
         y = read_label(path_y)
-        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 16)  #
+        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 16)
         for j in range(16):
             patches_x.append(x1[j])
             patches_y.append(y1[j])

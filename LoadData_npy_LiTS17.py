@@ -139,8 +139,8 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         x = read_dataset(path_x)
         path_y = dirY[i]
         y = read_label(path_y)
-        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 40)
-        for j in range(40):
+        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 16)
+        for j in range(16):
             patches_x.append(x1[j])
             patches_y.append(y1[j])
         x2 = np.array(mean_patch(reshape(x), patch_size, 1))
@@ -148,7 +148,7 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         permutation = np.random.permutation(x2.shape[0])
         x2 = x2[permutation]
         y2 = y2[permutation]
-        for j in range(20):  #
+        for j in range(8):  #
             x2[j][0] = x2[j][0].astype(np.int16)
             patches_x.append(x2[j])
             patches_y.append(y2[j][0])
@@ -291,18 +291,19 @@ class load_dataset_test(Dataset):
         return len(self.imgs)
 
 
-# from config.LiTS17.config_resnet18 import *
-# if __name__ == '__main__':
-#     for i in range(1,2):
-#         print(i)
-#         patchs_x, patchs_y = get_patches(train_image_list, train_label_list, 0, 99, patch_size, i)
-#         print("数据加载完成，shape：", patchs_y.shape)
-#         imgs = []
-#         for j in range(patchs_x.shape[0]):
-#             imgs.append((patchs_x[j], patchs_y[j]))
-#         del patchs_x, patchs_y
-#         np.save("train_data_" + str(i)+".npy", imgs)
-# os.system("shutdown")
+from config.LiTS17.config_resnet18 import *
+if __name__ == '__main__':
+    for i in range(1,2):
+        print(i)
+        patchs_x, patchs_y = get_patches(train_image_list, train_label_list, 0, 99, patch_size, i)
+        print("数据加载完成，shape：", patchs_y.shape)
+        imgs = []
+        for j in range(patchs_x.shape[0]):
+            imgs.append((patchs_x[j], patchs_y[j]))
+        del patchs_x, patchs_y
+        np.save("train_data_" + str(i)+".npy", imgs)
+        a = np.load("train_data_" + str(i)+".npy",allow_pickle=True)
+os.system("shutdown")
 
 # path = "../dataset/crossmoda2021_ldn_{index}_Label.nii.gz".format(index=1)
 # print(get_bounding_box(img))

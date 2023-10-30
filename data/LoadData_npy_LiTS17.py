@@ -138,8 +138,8 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         x = read_dataset(path_x)
         path_y = dirY[i]
         y = read_label(path_y)
-        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 80)
-        for j in range(80):
+        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 140)
+        for j in range(140):
             patches_x.append(x1[j])
             patches_y.append(y1[j])
         x2 = np.array(mean_patch(reshape(x), patch_size, 1))
@@ -147,7 +147,8 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         permutation = np.random.permutation(x2.shape[0])
         x2 = x2[permutation]
         y2 = y2[permutation]
-        for j in range(40):  #
+        a = 70 if x2.shape[0] > 70 else x2.shape[0]
+        for j in range(a):
             x2[j][0] = x2[j][0].astype(np.int16)
             patches_x.append(x2[j])
             patches_y.append(y2[j][0])
