@@ -7,11 +7,11 @@ ViT_patch_size = 16
 num_classes = 3
 channel_in = 1
 
-model_lr = 0.001
+model_lr = 0.0001
 batch_size = 5
 batch_size_val = 1
-epochs = 100
-train_step = 3
+epochs = 20
+train_step = 10
 model = ResNet18(in_channels=channel_in, num_classes=num_classes)
 
 train_model_path = ""

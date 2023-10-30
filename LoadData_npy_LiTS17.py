@@ -10,6 +10,7 @@ np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
 import gc
 from memory_profiler import profile
+import time
 
 def get_bounding_box(img):
     width, height, deep = img.shape
@@ -52,7 +53,6 @@ def get_bounding_box(img):
             break
     del img_x,img_y,img_z,a
     gc.collect()
-
     return box
 
 def setHU(img_arr, min, max):
@@ -68,60 +68,59 @@ def set_label(x):
 def reshape(pic):
     pic = np.expand_dims(pic, axis=0)
     return pic
-def read_dataset(path):
-    img = nib.load(path)
-    img_arr = np.array(img.dataobj)
-    img_arr = setHU(img_arr, -200, 250)
-    del img
-    gc.collect()
 
+def read_dataset(path):
+    img_arr = np.load(path)
+    img_arr = setHU(img_arr, -200, 250)
     return img_arr
+
 def read_dataset_test(path):
-    img = nib.load(path)
-    img_arr = np.array(img.dataobj)
+    img_arr = np.load(path)
     # img_arr = img_arr * 2400 / 256 - 1000
     img_arr = setHU(img_arr, -200, 250)
-    del img
-    gc.collect()
-
     return img_arr
+
 def read_label(path):
-    img = nib.load(path)
-    img_arr = np.array(img.dataobj)
-    triangle_ufunc1 = np.frompyfunc(set_label, 1, 1)
-    out = triangle_ufunc1(img_arr)
-    out = out.astype(np.float)
-    # out = img_arr
-    del img, img_arr, triangle_ufunc1
-    gc.collect()
-    return out
+    img_arr = np.load(path)
+    img_arr = img_arr.astype(np.float)
+    return img_arr
+
 # 从一个图像中随机取包含肿瘤的patch
 def get_patchs_from_one_img(img_x, img_y, patch_size, number):
-    # random.seed(123)
-    patchs_x = []
-    patchs_y = []
+    start = time.time()
     box = get_bounding_box(img_y)
-    # triangle_ufunc1 = np.frompyfunc(set_label, 1, 1)
-    # out = triangle_ufunc1(img_y)
-    # out = out.astype(np.float)
-    # box = get_bounding_box(out)
     width, height, deep = img_y.shape
-    verte_range = [max(box[0]-patch_size[0], 0), min(box[1], width-patch_size[0]),
-                   max(box[2]-patch_size[1], 0), min(box[3], height-patch_size[1]),
-                   max(box[4]-patch_size[2], 0), min(box[5], deep-patch_size[2])]
-    for i in range(number):
-        verte = [random.randint(verte_range[0],verte_range[1]), random.randint(verte_range[2],verte_range[3]), random.randint(verte_range[4],verte_range[5])]
-        patch_x = []
-        patch_x.append(np.expand_dims(img_x[verte[0]:verte[0]+patch_size[0],verte[1]:verte[1]+patch_size[1],verte[2]:verte[2]+patch_size[2]], axis=0))
-        patch_x.append(np.array(verte))
-        patchs_x.append(patch_x)
-        patch_y = []
-        patch_y.append(img_y[verte[0]:verte[0]+patch_size[0],verte[1]:verte[1]+patch_size[1],verte[2]:verte[2]+patch_size[2]].tolist())
-        patchs_y.append(patch_y)
-    patchs_x = np.array(patchs_x)
-    # patchs_x[index][0]为图像，patchs_x[index][1]为patch顶点在原始图像中的位置
-    patchs_y = np.array(patchs_y) # (channel, deep, width, height)
-    return patchs_x, patchs_y
+    verte_range = [
+        max(box[0] - patch_size[0], 0), min(box[1], width - patch_size[0]),
+        max(box[2] - patch_size[1], 0), min(box[3], height - patch_size[1]),
+        max(box[4] - patch_size[2], 0), min(box[5], deep - patch_size[2])
+    ]
+    verte_coords = [
+        (
+            random.randint(verte_range[0], verte_range[1]),
+            random.randint(verte_range[2], verte_range[3]),
+            random.randint(verte_range[4], verte_range[5])
+        )
+        for _ in range(number)
+    ]
+
+    patchs_x = [
+        [
+            np.expand_dims(
+                img_x[v[0]:v[0] + patch_size[0], v[1]:v[1] + patch_size[1], v[2]:v[2] + patch_size[2]], axis=0
+            ),
+            np.array(v)
+        ]
+        for v in verte_coords
+    ]
+
+    patchs_y = [
+        [img_y[v[0]:v[0] + patch_size[0], v[1]:v[1] + patch_size[1], v[2]:v[2] + patch_size[2]]]
+        for v in verte_coords
+    ]
+    print("加载patch耗时：", time.time() - start)
+    return np.array(patchs_x), np.array(patchs_y)
+
 
 # 将从多张图片取的随机patch组合在一起
 def get_patches(dirX, dirY, begin, end, patch_size, seed):
@@ -139,7 +138,7 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         x = read_dataset(path_x)
         path_y = dirY[i]
         y = read_label(path_y)
-        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 16)  #
+        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 16)
         for j in range(16):
             patches_x.append(x1[j])
             patches_y.append(y1[j])
@@ -290,6 +289,18 @@ class load_dataset_test(Dataset):
     def __len__(self):
         return len(self.imgs)
 
+
+from config.LiTS17.config_resnet18 import *
+if __name__ == '__main__':
+    for i in range(1, 10):
+        print(i)
+        patchs_x, patchs_y = get_patches(train_image_list, train_label_list, 0, 99, patch_size, i)
+        print("数据加载完成，shape：", patchs_y.shape)
+        imgs = []
+        for i in range(patchs_x.shape[0]):
+            imgs.append((patchs_x[i], patchs_y[i]))
+        del patchs_x, patchs_y
+        np.save("train_data_" + str(i), imgs)
 
 # path = "../dataset/crossmoda2021_ldn_{index}_Label.nii.gz".format(index=1)
 # print(get_bounding_box(img))
