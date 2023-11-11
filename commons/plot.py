@@ -35,6 +35,10 @@ def save_nii_(img_arr, name, path):
     # nib.Nifti1Image(img_arr, np.eye(4)).to_filename(f'{name}.nii.gz'.format(name=name))
     # img_arr要为int16的nparray
 
+def save_npy(img_arr, name):
+    np.save("{name}.npy".format(name=name),img_arr)
+
+
 def draw(loss, loss2, name):
     x = [range(0, len(loss))]
     x = [[row[i] for row in x] for i in range(len(x[0]))]

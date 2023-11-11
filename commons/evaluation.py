@@ -188,10 +188,10 @@ metric = {"Dice": dice_coef,
 for key, value in metric.items():
     print(key)
     for n in range(0,31):
-        path_x = "../save/LiTS17/UNETRpp/pre/UNETRpp_LiTS17_pre_"+str(n)+".nii.gz"
+        path_x = "../save/LiTS17/UNETRpp/40x6/UNETRpp_LiTS17_pre_"+str(n)+".nii.gz"
         x = read_nii(path_x)
         x = torch.tensor(x)
-        path_y = "../../dataset/Task001_LiTS17/labelsTs/case_00"+str(n+100)+".nii.gz"
+        path_y = "../../../../dataset/nnUNet_raw/Task001_LiTS17/labelsTs/case_00"+str(n+100)+".nii.gz"
         # path_y = "G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/labelsTs/case_000"+str(n+15)+".nii.gz"
         y = read_nii(path_y)
         y = torch.tensor(y)

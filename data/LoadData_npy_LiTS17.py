@@ -12,6 +12,7 @@ import gc
 from memory_profiler import profile
 import time
 
+
 def get_bounding_box(img):
     width, height, deep = img.shape
     box = [0, 0, 0, 0, 0, 0]  # [width_low, width_high, height_low, height_high, deep_low, deep_high]
