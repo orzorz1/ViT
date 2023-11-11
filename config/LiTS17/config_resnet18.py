@@ -10,12 +10,12 @@ channel_in = 1
 model_lr = 0.0001
 batch_size = 5
 batch_size_val = 1
-epochs = 100
-train_step = 10
+epochs = 40
+train_step = 6
 model = ResNet18(in_channels=channel_in, num_classes=num_classes)
 
 train_model_path = ""
-pre_model_path = "./ResNet18_LiTS17_3.pth"
+pre_model_path = "/root/autodl-tmp/ViT/ResNet18_LiTS17_6.pth"
 trainOrPredict = "train"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
 save_log = False  # 是否记录训练日志
