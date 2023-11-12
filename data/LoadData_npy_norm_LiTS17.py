@@ -169,8 +169,8 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         x = read_dataset(path_x)
         path_y = dirY[i]
         y = read_label(path_y)
-        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 140)
-        for j in range(140):
+        x1, y1 = get_patchs_from_one_img(x, y, patch_size, 80)
+        for j in range(80):
             patches_x.append(x1[j])
             patches_y.append(y1[j])
         x2 = np.array(mean_patch(reshape(x), patch_size, 1))
@@ -178,7 +178,7 @@ def get_patches(dirX, dirY, begin, end, patch_size, seed):
         permutation = np.random.permutation(x2.shape[0])
         x2 = x2[permutation]
         y2 = y2[permutation]
-        a = 70 if x2.shape[0] > 70 else x2.shape[0]
+        a = 40 if x2.shape[0] > 40 else x2.shape[0]
         for j in range(a):
             x2[j][0] = x2[j][0].astype(np.int16)
             patches_x.append(x2[j])
@@ -303,8 +303,8 @@ class load_dataset_test(Dataset):
         path_y = dirY[index]
         y = read_label(path_y)
         y = reshape(y)
-        patchs_x = mean_patch(x, patch_size, 4)
-        patchs_y = mean_patch(y, patch_size, 4)
+        patchs_x = mean_patch(x, patch_size, 2)
+        patchs_y = mean_patch(y, patch_size, 2)
         print("数据加载完成")
         imgs = []
         for i in range(len(patchs_x)):

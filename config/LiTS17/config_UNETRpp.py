@@ -16,9 +16,9 @@ model = UNETR_PP(in_channels=channel_in, out_channels=num_classes, patch_size=pa
 
 train_model_path = ""  # 从0开始训练填""
 pre_model_path = "/root/autodl-tmp/ViT/UNETRpp_LiTS17_6.pth"
-trainOrPredict = "train"  # "train" or "predict"
+trainOrPredict = "predict"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
-save_log = True  # 是否记录训练日志
+save_log = False  # 是否记录训练日志
 saveModel_name = "UNETRpp_LiTS17"
 saveImage_name = "UNETRpp_LiTS17_pre"
 

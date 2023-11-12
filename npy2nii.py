@@ -19,7 +19,7 @@ def combine_npy_with_nii(npy_file_path, nii_template_path, output_nii_path):
 # 调用函数
 # combine_npy_with_nii('path/to/your/data.npy', 'path/to/your/template.nii', 'path/to/your/output.nii')
 for i in range(31):
-    npy_file_path = './save/LiTS17/UNETRpp/100x3/UNETRpp_LiTS17_pre_{index}.npy'.format(index=i)
-    nii_template_path = '../dataset/imagesTs/case_00{index}.nii.gz'.format(index=i+100)
-    output_nii_path = './save/LiTS17/UNETRpp/100x3/UNETRpp_LiTS17_pre_{index}.nii.gz'.format(index=i)
+    npy_file_path = './UNETRpp_LiTS17_pre_{index}.npy'.format(index=i)
+    nii_template_path = '../dataset/LiTS17/imagesTs/case_00{index}.nii.gz'.format(index=i+100)
+    output_nii_path = './save/LiTS17/UNETRpp/norm40x6/pre_2/UNETRpp_LiTS17_pre_{index}.nii.gz'.format(index=i)
     combine_npy_with_nii(npy_file_path, nii_template_path, output_nii_path)
