@@ -1,5 +1,5 @@
 from commons.tool import listdir
-from models.ResNet18 import ResNet18
+from models.UNet_3D import UNet_3D
 
 patch_size = [128, 128, 32]
 
@@ -8,19 +8,19 @@ num_classes = 3
 channel_in = 1
 
 model_lr = 0.0001
-batch_size = 5
-batch_size_val = 1
+batch_size = 12
+batch_size_val = 2
 epochs = 40
 train_step = 6
-model = ResNet18(in_channels=channel_in, num_classes=num_classes)
+model = UNet_3D(channel_in, num_classes)
 
 train_model_path = ""
-pre_model_path = "/root/autodl-tmp/ViT/ResNet18_LiTS17_6.pth"
+pre_model_path = "/root/autodl-tmp/ViT/UNet18_LiTS17_6.pth"
 trainOrPredict = "train"  # "train" or "predict"
 openAMP = True  # 是否开启自动混合精度
 save_log = False  # 是否记录训练日志
-saveModel_name = "ResNet18_LiTS17"
-saveImage_name = "ResNet18_LiTS17_pre"
+saveModel_name = "UNet18_LiTS17"
+saveImage_name = "UNet18_LiTS17_pre"
 
 
 train_image_path = '../dataset/LiTS17_npy/imagesTr'
