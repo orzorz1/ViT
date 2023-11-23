@@ -39,7 +39,7 @@ class BaseTrainHelper(object):
         for i in range(1, train_step+1):
             print("训练进度：{index}/{train_step}".format(index=i,train_step=train_step))
             val_data = load_dataset_one(test_image_list, test_label_list, 1, patch_size)
-            dataset = load_dataset(train_image_list, train_label_list, 0, 1, i, patch_size)
+            dataset = load_dataset(train_image_list, train_label_list, 0, 99, i, patch_size)
             train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
             val_loader = DataLoader(dataset=val_data, batch_size=batch_size_val)
             for epoch in range(epochs):

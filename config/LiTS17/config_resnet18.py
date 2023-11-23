@@ -1,7 +1,7 @@
 from commons.tool import listdir
 from models.ResNet18 import ResNet18
 
-patch_size = [128, 128, 64]
+patch_size = [128, 128, 32]
 
 ViT_patch_size = 16
 num_classes = 3

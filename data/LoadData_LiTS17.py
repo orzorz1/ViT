@@ -9,7 +9,7 @@ import random
 np.set_printoptions(threshold=np.inf)
 np.set_printoptions(suppress=True)
 import gc
-from memory_profiler import profile
+# from memory_profiler import profile
 import time
 
 def get_bounding_box(img):

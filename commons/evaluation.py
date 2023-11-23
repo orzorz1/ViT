@@ -9,10 +9,10 @@ import torch
 
 
 def set_label(x):
-    if x != 2:
+    if x != 1:
         x = 0
     else:
-        x = 2
+        x = 1
     return x
 
 def read_nii(path):
@@ -20,13 +20,13 @@ def read_nii(path):
     img_arr = np.array(img.dataobj)
     triangle_ufunc1 = np.frompyfunc(set_label, 1, 1)
     out = triangle_ufunc1(img_arr)
-    out = out.astype(np.float)
+    out = out.astype(float)
     # out = img_arr
     return out
 
 def dice_coef(y_pred, y_true):
-    im1 = np.asarray(y_true).astype(np.bool)
-    im2 = np.asarray(y_pred).astype(np.bool)
+    im1 = np.asarray(y_true).astype(bool)
+    im2 = np.asarray(y_pred).astype(bool)
 
     if im1.shape != im2.shape:
         raise ValueError("Shape mismatch: im1 and im2 must have the same shape.")
@@ -188,7 +188,8 @@ metric = {"Dice": dice_coef,
 for key, value in metric.items():
     print(key)
     for n in range(0,31):
-        path_x = "../save/LiTS17/UNETRpp/pre/UNETRpp_LiTS17_pre_"+str(n)+".nii.gz"
+        # path_x = "../save/LiTS17/UNETRpp/norm40x6/pre_2/UNETRpp_LiTS17_pre_"+str(n)+".nii.gz"
+        path_x = "../save/LiTS17/nnUNet/inferTs/case_00" + str(n+100) + ".nii.gz"
         x = read_nii(path_x)
         x = torch.tensor(x)
         path_y = "../../dataset/Task001_LiTS17/labelsTs/case_00"+str(n+100)+".nii.gz"
