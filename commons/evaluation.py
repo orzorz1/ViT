@@ -9,10 +9,10 @@ import torch
 
 
 def set_label(x):
-    if x != 2:
+    if x != 1:
         x = 0
     else:
-        x = 2
+        x = 1
     return x
 
 def read_nii(path):
@@ -188,10 +188,11 @@ metric = {"Dice": dice_coef,
 for key, value in metric.items():
     print(key)
     for n in range(0,31):
-        path_x = "../save/LiTS17/UNETRpp/norm40x6/pre_2/UNETRpp_LiTS17_pre_"+str(n)+".nii.gz"
+        # path_x = "../save/LiTS17/UNETRpp/norm40x6/pre_2/UNETRpp_LiTS17_pre_"+str(n)+".nii.gz"
+        path_x = "../save/LiTS17/nnUNet/inferTs/case_00" + str(n+100) + ".nii.gz"
         x = read_nii(path_x)
         x = torch.tensor(x)
-        path_y = "../../../../dataset/nnUNet_raw/Task001_LiTS17/labelsTs/case_00"+str(n+100)+".nii.gz"
+        path_y = "../../dataset/Task001_LiTS17/labelsTs/case_00"+str(n+100)+".nii.gz"
         # path_y = "G:/file/Project/Deng/dataset/nnUNet_raw/Task20_CHAOSct/labelsTs/case_000"+str(n+15)+".nii.gz"
         y = read_nii(path_y)
         y = torch.tensor(y)
